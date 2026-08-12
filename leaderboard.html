@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Student Leaderboard - School Ecosystem</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "background": "#f7fafe",
+                        "outline": "#77767e",
+                        "secondary-fixed": "#d9e2ff",
+                        "on-primary-fixed": "#151a31",
+                        "on-tertiary-container": "#7073ff",
+                        "surface-container-lowest": "#ffffff",
+                        "tertiary-container": "#07006c",
+                        "error-container": "#ffdad6",
+                        "on-error": "#ffffff",
+                        "tertiary-fixed": "#e1e0ff",
+                        "on-tertiary-fixed": "#07006c",
+                        "secondary": "#0057c2",
+                        "error": "#ba1a1a",
+                        "on-secondary-fixed-variant": "#004398",
+                        "eco-success": "#16865B",
+                        "tertiary-fixed-dim": "#c0c1ff",
+                        "on-primary-fixed-variant": "#41455e",
+                        "on-surface-variant": "#46464d",
+                        "on-surface": "#181c1f",
+                        "warning-amber": "#F59E0B",
+                        "surface-container-low": "#f1f4f8",
+                        "primary": "#000000",
+                        "on-background": "#181c1f",
+                        "on-primary-container": "#7e829e",
+                        "danger-red": "#EF4444",
+                        "primary-fixed": "#dde1ff",
+                        "inverse-on-surface": "#eef1f5",
+                        "surface-variant": "#e0e3e7",
+                        "surface": "#f7fafe",
+                        "on-primary": "#ffffff",
+                        "tertiary": "#000000",
+                        "primary-fixed-dim": "#c1c5e3",
+                        "surface-bright": "#f7fafe",
+                        "violet-accent": "#8B5CF6",
+                        "inverse-primary": "#c1c5e3",
+                        "on-error-container": "#93000a",
+                        "secondary-fixed-dim": "#afc6ff",
+                        "inverse-surface": "#2d3134",
+                        "on-tertiary-fixed-variant": "#2f2ebe",
+                        "outline-variant": "#c7c5ce",
+                        "primary-container": "#151a31",
+                        "on-secondary-container": "#fefcff",
+                        "dark-navy-text": "#111827",
+                        "surface-tint": "#585d77",
+                        "on-secondary": "#ffffff",
+                        "surface-container-highest": "#e0e3e7",
+                        "surface-container": "#ebeef2",
+                        "surface-container-high": "#e5e8ec",
+                        "muted-gray": "#667085",
+                        "on-tertiary": "#ffffff",
+                        "surface-dim": "#d7dade",
+                        "on-secondary-fixed": "#001a43",
+                        "cool-white": "#F9FAFF",
+                        "secondary-container": "#246fe7"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xl": "40px",
+                        "xs": "4px",
+                        "md": "16px",
+                        "sm": "8px",
+                        "margin-desktop": "32px",
+                        "unit": "4px",
+                        "gutter": "16px",
+                        "lg": "24px",
+                        "margin-mobile": "16px"
+                    },
+                    "fontFamily": {
+                        "label-xs": ["Inter"],
+                        "headline-md": ["Plus Jakarta Sans"],
+                        "body-lg": ["Plus Jakarta Sans"],
+                        "headline-lg-mobile": ["Plus Jakarta Sans"],
+                        "label-sm": ["Inter"],
+                        "headline-xl": ["Plus Jakarta Sans"],
+                        "body-md": ["Plus Jakarta Sans"],
+                        "headline-lg": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "label-xs": ["12px", { "lineHeight": "16px", "fontWeight": "700" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "headline-lg-mobile": ["24px", { "lineHeight": "32px", "fontWeight": "700" }],
+                        "label-sm": ["14px", { "lineHeight": "20px", "letterSpacing": "0.02em", "fontWeight": "600" }],
+                        "headline-xl": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glass-card {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 4px 24px -4px rgba(11, 16, 38, 0.04);
+        }
+        .pb-safe { padding-bottom: env(safe-area-inset-bottom, 16px); }
+        .pt-safe { padding-top: env(safe-area-inset-top, 0px); }
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen flex flex-col pt-safe pb-24">
+    <!-- TopAppBar -->
+    <header class="fixed top-0 w-full z-50 bg-surface/80 backdrop-blur-md shadow-sm">
+        <div class="flex justify-between items-center w-full px-margin-mobile md:px-margin-desktop py-4 max-w-7xl mx-auto">
+            <div class="flex items-center gap-sm">
+                <span class="material-symbols-outlined text-primary" data-icon="eco">eco</span>
+                <span class="font-headline-md text-headline-md font-bold text-primary tracking-tight">School Ecosystem</span>
+            </div>
+            <!-- Header Links for desktop -->
+            <nav class="hidden md:flex items-center gap-lg">
+                <a class="text-on-surface-variant font-label-sm text-label-sm hover:bg-surface-container-high transition-colors px-3 py-2 rounded-lg" href="student-dashboard.html">Home</a>
+                <a class="text-secondary font-bold font-label-sm text-label-sm transition-colors" href="leaderboard.html">Leaderboard</a>
+                <a class="text-on-surface-variant font-label-sm text-label-sm hover:bg-surface-container-high transition-colors px-3 py-2 rounded-lg" href="profile.html">Profile &amp; QR</a>
+            </nav>
+            <a href="profile.html">
+                <img id="user-avatar" alt="User Profile" class="w-8 h-8 rounded-full object-cover border border-outline-variant" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB4Cf9cxxPl5TjFhzUcx09Bhd6lwE2I1ZEULCc0zmP-g8zlEaBz1w1XaxG-8KqlueIopK7jjk9e5ZPXGxm9nCOrarLpDnt4bs0q14kfQ1G78tYNHgLO6T6w101ZJLYSkm_rjdJ8DHDmwPlwmOttY6Xab_FpCQnZjJ18CUqbC5fwYjMjS-ZV4wW9HzW4KvvlKxTlcP7P0REN6cc3jWOcqeuUkupUiwJviu7RwABmCYOjv2NSqudzt86j"/>
+            </a>
+        </div>
+    </header>
+    <!-- Main Content -->
+    <main class="flex-grow pt-24 px-margin-mobile md:px-margin-desktop max-w-7xl mx-auto w-full space-y-lg">
+        <!-- Header Section -->
+        <section class="space-y-sm">
+            <h1 class="font-headline-lg-mobile text-headline-lg-mobile md:font-headline-lg md:text-headline-lg text-primary">Leaderboard</h1>
+            <p class="font-body-md text-body-md text-muted-gray">Top performers driving sustainability this month.</p>
+        </section>
+        <!-- Reward Pool Progress -->
+        <section class="glass-card rounded-xl p-md">
+            <div class="flex justify-between items-center mb-sm">
+                <div class="flex items-center gap-xs">
+                    <span class="material-symbols-outlined text-warning-amber" data-icon="local_cafe" data-weight="fill">local_cafe</span>
+                    <h2 class="font-label-sm text-label-sm text-primary">Reward Pool: Traktir Kopi</h2>
+                </div>
+                <span class="font-label-sm text-label-sm text-secondary">75%</span>
+            </div>
+            <div class="w-full bg-surface-container-high rounded-full h-3 mb-xs overflow-hidden">
+                <div class="bg-gradient-to-r from-secondary to-violet-accent h-3 rounded-full" style="width: 75%"></div>
+            </div>
+            <p class="font-label-xs text-label-xs text-muted-gray">3/4 milestones reached to unlock vouchers for Top 10!</p>
+        </section>
+        <!-- Toggle Tabs -->
+        <div class="flex bg-surface-container-low rounded-lg p-xs">
+            <button id="tab-individu" class="flex-1 py-2 font-label-sm text-label-sm text-on-primary bg-secondary rounded-md shadow-sm transition-all" onclick="setTab('individu')">
+                Top Jawara Individu
+            </button>
+            <button id="tab-kelas" class="flex-1 py-2 font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-all" onclick="setTab('kelas')">
+                Ranking Kelas
+            </button>
+        </div>
+        <!-- Top 3 Podium (Bento-style) -->
+        <section class="grid grid-cols-3 gap-sm items-end mt-lg" id="podium-section">
+            <!-- Rendered Dynamically -->
+        </section>
+        <!-- List View (Ranks 4-10) -->
+        <section class="space-y-sm mt-md">
+            <h3 class="font-label-sm text-label-sm text-muted-gray uppercase tracking-widest pl-xs" id="list-title">Top 10 Eligible</h3>
+            <div class="space-y-sm" id="leaderboard-list">
+                <!-- Rendered Dynamically -->
+            </div>
+            <!-- Current User Sticky View -->
+            <div id="sticky-user-view">
+                <!-- Rendered Dynamically -->
+            </div>
+        </section>
+    </main>
+    <!-- BottomNavBar -->
+    <nav class="md:hidden fixed bottom-0 w-full z-50 rounded-t-xl border-t border-outline-variant bg-surface-container-lowest/90 backdrop-blur-xl shadow-lg pb-safe">
+        <ul class="flex justify-around items-center h-16 px-4">
+            <li>
+                <a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-all" href="student-dashboard.html">
+                    <span class="material-symbols-outlined mb-1">home</span>
+                    <span class="font-label-xs text-label-xs">Home</span>
+                </a>
+            </li>
+            <li>
+                <a class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-full px-4 py-1 scale-90 duration-200" href="leaderboard.html">
+                    <span class="material-symbols-outlined mb-1">leaderboard</span>
+                    <span class="font-label-xs text-label-xs font-bold text-secondary">Leaderboard</span>
+                </a>
+            </li>
+            <li>
+                <a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-all" href="profile.html">
+                    <span class="material-symbols-outlined mb-1">person</span>
+                    <span class="font-label-xs text-label-xs">Profile</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <script src="shared.js"></script>
+    <script>
+        checkAuth(['student']);
+
+        let activeTab = 'individu';
+
+        const CLASS_MOCK_DATA = [
+            { name: "Kelas 11 Science A", points: 12500, avatar: "https://lh3.googleusercontent.com/aida-public/AB6AXuC8stGe7FqXfOCc0ASBnWF7dY3f9WvcgVsj9Xi44wVhp2kgTVnpEux3_ozAmlDWtDVHfSPZgadwdaYPOsYqYtN77KPhC7eLylX3EZEvRgwc8hoDayMN217_XyVGX9322TTQA9y4zl7_qhJYqOBzIW-j1A51qZpq7SqdPsL4hE7Pe7QM50dAiF1aBhwEETKCTHIpN2wIfGyq8c3O0y2LFTKe4TG-H6zLVtcCvXBJ6u7pdkOB5XLp6qpayQetoLyD0_3tWA", grade: "11th Grade" },
+            { name: "Kelas 12 Science C", points: 11200, avatar: "https://lh3.googleusercontent.com/aida-public/AB6AXuC8stGe7FqXfOCc0ASBnWF7dY3f9WvcgVsj9Xi44wVhp2kgTVnpEux3_ozAmlDWtDVHfSPZgadwdaYPOsYqYtN77KPhC7eLylX3EZEvRgwc8hoDayMN217_XyVGX9322TTQA9y4zl7_qhJYqOBzIW-j1A51qZpq7SqdPsL4hE7Pe7QM50dAiF1aBhwEETKCTHIpN2wIfGyq8c3O0y2LFTKe4TG-H6zLVtcCvXBJ6u7pdkOB5XLp6qpayQetoLyD0_3tWA", grade: "12th Grade" },
+            { name: "Kelas 11 Science B", points: 9800, avatar: "https://lh3.googleusercontent.com/aida-public/AB6AXuC8stGe7FqXfOCc0ASBnWF7dY3f9WvcgVsj9Xi44wVhp2kgTVnpEux3_ozAmlDWtDVHfSPZgadwdaYPOsYqYtN77KPhC7eLylX3EZEvRgwc8hoDayMN217_XyVGX9322TTQA9y4zl7_qhJYqOBzIW-j1A51qZpq7SqdPsL4hE7Pe7QM50dAiF1aBhwEETKCTHIpN2wIfGyq8c3O0y2LFTKe4TG-H6zLVtcCvXBJ6u7pdkOB5XLp6qpayQetoLyD0_3tWA", grade: "11th Grade" },
+            { name: "Kelas 10 Science A", points: 8400, avatar: "https://lh3.googleusercontent.com/aida-public/AB6AXuC8stGe7FqXfOCc0ASBnWF7dY3f9WvcgVsj9Xi44wVhp2kgTVnpEux3_ozAmlDWtDVHfSPZgadwdaYPOsYqYtN77KPhC7eLylX3EZEvRgwc8hoDayMN217_XyVGX9322TTQA9y4zl7_qhJYqOBzIW-j1A51qZpq7SqdPsL4hE7Pe7QM50dAiF1aBhwEETKCTHIpN2wIfGyq8c3O0y2LFTKe4TG-H6zLVtcCvXBJ6u7pdkOB5XLp6qpayQetoLyD0_3tWA", grade: "10th Grade" },
+            { name: "Kelas 12 Social A", points: 7200, avatar: "https://lh3.googleusercontent.com/aida-public/AB6AXuC8stGe7FqXfOCc0ASBnWF7dY3f9WvcgVsj9Xi44wVhp2kgTVnpEux3_ozAmlDWtDVHfSPZgadwdaYPOsYqYtN77KPhC7eLylX3EZEvRgwc8hoDayMN217_XyVGX9322TTQA9y4zl7_qhJYqOBzIW-j1A51qZpq7SqdPsL4hE7Pe7QM50dAiF1aBhwEETKCTHIpN2wIfGyq8c3O0y2LFTKe4TG-H6zLVtcCvXBJ6u7pdkOB5XLp6qpayQetoLyD0_3tWA", grade: "12th Grade" }
+        ];
+
+        function setTab(tab) {
+            activeTab = tab;
+            const btnInd = document.getElementById("tab-individu");
+            const btnKel = document.getElementById("tab-kelas");
+
+            if (tab === 'individu') {
+                btnInd.className = 'flex-1 py-2 font-label-sm text-label-sm text-on-primary bg-secondary rounded-md shadow-sm transition-all';
+                btnKel.className = 'flex-1 py-2 font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-all';
+                document.getElementById("list-title").innerText = "Top 10 Eligible";
+            } else {
+                btnKel.className = 'flex-1 py-2 font-label-sm text-label-sm text-on-primary bg-secondary rounded-md shadow-sm transition-all';
+                btnInd.className = 'flex-1 py-2 font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-all';
+                document.getElementById("list-title").innerText = "District Class Standing";
+            }
+            renderLeaderboard();
+        }
+
+        function renderLeaderboard() {
+            const state = getAppState();
+            const user = getLoggedInUser();
+            const currentStudent = state.students.find(s => s.name === user.name) || state.students[0];
+
+            document.getElementById("user-avatar").src = currentStudent.avatar;
+
+            let dataList = [];
+            if (activeTab === 'individu') {
+                dataList = [...state.students].sort((a, b) => b.points - a.points);
+            } else {
+                dataList = [...CLASS_MOCK_DATA].sort((a, b) => b.points - a.points);
+            }
+
+            // Render Podium
+            const podium = document.getElementById("podium-section");
+            podium.innerHTML = "";
+
+            const rank1 = dataList[0];
+            const rank2 = dataList[1];
+            const rank3 = dataList[2];
+
+            // Render Rank 2 (Left)
+            if (rank2) {
+                podium.innerHTML += `
+                    <div class="glass-card rounded-xl p-sm flex flex-col items-center relative h-32 justify-end border-b-4 border-surface-tint">
+                        <div class="absolute -top-6 bg-surface-container-highest w-8 h-8 rounded-full flex items-center justify-center font-label-sm text-label-sm font-bold text-muted-gray ring-4 ring-background">2</div>
+                        <img alt="Rank 2" class="w-12 h-12 rounded-full mb-xs border-2 border-surface-tint object-cover" src="${rank2.avatar}"/>
+                        <p class="font-label-xs text-label-xs text-primary truncate w-full text-center">${rank2.name.split(' ')[0]}</p>
+                        <p class="font-label-xs text-label-xs text-secondary">${rank2.points.toLocaleString()} pts</p>
+                    </div>
+                `;
+            }
+
+            // Render Rank 1 (Center)
+            if (rank1) {
+                podium.innerHTML += `
+                    <div class="glass-card rounded-xl p-sm flex flex-col items-center relative h-40 justify-end border-b-4 border-warning-amber shadow-[0_4px_20px_rgba(245,158,11,0.2)] z-10 scale-105">
+                        <span class="material-symbols-outlined absolute -top-8 text-warning-amber text-3xl drop-shadow-md" style="font-variation-settings: 'FILL' 1;">kid_star</span>
+                        <div class="absolute -top-3 bg-warning-amber w-8 h-8 rounded-full flex items-center justify-center font-label-sm text-label-sm font-bold text-on-primary ring-4 ring-background">1</div>
+                        <img alt="Rank 1" class="w-16 h-16 rounded-full mb-xs border-2 border-warning-amber object-cover" src="${rank1.avatar}"/>
+                        <p class="font-label-sm text-label-sm text-primary font-bold truncate w-full text-center">${rank1.name.split(' ')[0]}</p>
+                        <p class="font-label-xs text-label-xs text-warning-amber font-bold">${rank1.points.toLocaleString()} pts</p>
+                    </div>
+                `;
+            }
+
+            // Render Rank 3 (Right)
+            if (rank3) {
+                podium.innerHTML += `
+                    <div class="glass-card rounded-xl p-sm flex flex-col items-center relative h-28 justify-end border-b-4 border-surface-tint">
+                        <div class="absolute -top-6 bg-surface-container-highest w-8 h-8 rounded-full flex items-center justify-center font-label-sm text-label-sm font-bold text-muted-gray ring-4 ring-background">3</div>
+                        <img alt="Rank 3" class="w-10 h-10 rounded-full mb-xs border-2 border-surface-tint object-cover" src="${rank3.avatar}"/>
+                        <p class="font-label-xs text-label-xs text-primary truncate w-full text-center">${rank3.name.split(' ')[0]}</p>
+                        <p class="font-label-xs text-label-xs text-secondary">${rank3.points.toLocaleString()} pts</p>
+                    </div>
+                `;
+            }
+
+            // Render remaining Ranks 4-10
+            const listContainer = document.getElementById("leaderboard-list");
+            listContainer.innerHTML = "";
+
+            const remaining = dataList.slice(3, 10);
+            remaining.forEach((item, index) => {
+                const rank = index + 4;
+                const isCurrentUser = activeTab === 'individu' && item.name === currentStudent.name;
+                listContainer.innerHTML += `
+                    <div class="glass-card rounded-lg p-sm flex items-center gap-md hover:shadow-md transition-shadow ${isCurrentUser ? 'bg-secondary-fixed/20 border-secondary/20' : ''}">
+                        <span class="font-label-sm text-label-sm text-muted-gray w-6 text-center">${rank}</span>
+                        <img alt="Rank ${rank}" class="w-10 h-10 rounded-full bg-surface-container-high object-cover" src="${item.avatar}"/>
+                        <div class="flex-grow">
+                            <p class="font-label-sm text-label-sm text-primary ${isCurrentUser ? 'font-bold' : ''}">${isCurrentUser ? 'You' : item.name}</p>
+                            <p class="font-label-xs text-label-xs text-muted-gray">${item.grade}</p>
+                        </div>
+                        <div class="text-right">
+                            <p class="font-label-sm text-label-sm text-secondary font-bold">${item.points.toLocaleString()}</p>
+                            <p class="font-label-xs text-label-xs text-muted-gray">pts</p>
+                        </div>
+                    </div>
+                `;
+            });
+
+            // Sticky user rank highlight if not in Top 10
+            const stickyUser = document.getElementById("sticky-user-view");
+            stickyUser.innerHTML = "";
+
+            if (activeTab === 'individu') {
+                const userIndex = dataList.findIndex(s => s.name === currentStudent.name);
+                const userRank = userIndex + 1;
+                
+                if (userRank > 10) {
+                    const diffToNext = dataList[userIndex - 1] ? dataList[userIndex - 1].points - currentStudent.points : 50;
+                    stickyUser.innerHTML = `
+                        <div class="glass-card rounded-lg p-sm flex items-center gap-md bg-secondary-fixed/30 border border-secondary/20 mt-md">
+                            <span class="font-label-sm text-label-sm text-secondary w-6 text-center font-bold">${userRank}</span>
+                            <img alt="You" class="w-10 h-10 rounded-full border border-secondary object-cover" src="${currentStudent.avatar}"/>
+                            <div class="flex-grow">
+                                <p class="font-label-sm text-label-sm text-primary font-bold">You</p>
+                                <p class="font-label-xs text-label-xs text-secondary">+${diffToNext} to next rank</p>
+                            </div>
+                            <div class="text-right">
+                                <p class="font-label-sm text-label-sm text-secondary font-bold">${currentStudent.points.toLocaleString()}</p>
+                                <p class="font-label-xs text-label-xs text-secondary/80">pts</p>
+                            </div>
+                        </div>
+                    `;
+                }
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            renderLeaderboard();
+        });
+    </script>
+</body>
+</html>

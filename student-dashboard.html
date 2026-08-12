@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>School Ecosystem - Student Dashboard</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=Plus+Jakarta+Sans:wght@400;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "background": "#f7fafe",
+                        "outline": "#77767e",
+                        "secondary-fixed": "#d9e2ff",
+                        "on-primary-fixed": "#151a31",
+                        "on-tertiary-container": "#7073ff",
+                        "surface-container-lowest": "#ffffff",
+                        "tertiary-container": "#07006c",
+                        "error-container": "#ffdad6",
+                        "on-error": "#ffffff",
+                        "tertiary-fixed": "#e1e0ff",
+                        "on-tertiary-fixed": "#07006c",
+                        "secondary": "#0057c2",
+                        "error": "#ba1a1a",
+                        "on-secondary-fixed-variant": "#004398",
+                        "eco-success": "#16865B",
+                        "tertiary-fixed-dim": "#c0c1ff",
+                        "on-primary-fixed-variant": "#41455e",
+                        "on-surface-variant": "#46464d",
+                        "on-surface": "#181c1f",
+                        "warning-amber": "#F59E0B",
+                        "surface-container-low": "#f1f4f8",
+                        "primary": "#000000",
+                        "on-background": "#181c1f",
+                        "on-primary-container": "#7e829e",
+                        "danger-red": "#EF4444",
+                        "primary-fixed": "#dde1ff",
+                        "inverse-on-surface": "#eef1f5",
+                        "surface-variant": "#e0e3e7",
+                        "surface": "#f7fafe",
+                        "on-primary": "#ffffff",
+                        "tertiary": "#000000",
+                        "primary-fixed-dim": "#c1c5e3",
+                        "surface-bright": "#f7fafe",
+                        "violet-accent": "#8B5CF6",
+                        "inverse-primary": "#c1c5e3",
+                        "on-error-container": "#93000a",
+                        "secondary-fixed-dim": "#afc6ff",
+                        "inverse-surface": "#2d3134",
+                        "on-tertiary-fixed-variant": "#2f2ebe",
+                        "outline-variant": "#c7c5ce",
+                        "primary-container": "#151a31",
+                        "on-secondary-container": "#fefcff",
+                        "dark-navy-text": "#111827",
+                        "surface-tint": "#585d77",
+                        "on-secondary": "#ffffff",
+                        "surface-container-highest": "#e0e3e7",
+                        "surface-container": "#ebeef2",
+                        "surface-container-high": "#e5e8ec",
+                        "muted-gray": "#667085",
+                        "on-tertiary": "#ffffff",
+                        "surface-dim": "#d7dade",
+                        "on-secondary-fixed": "#001a43",
+                        "cool-white": "#F9FAFF",
+                        "secondary-container": "#246fe7"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xl": "40px",
+                        "xs": "4px",
+                        "md": "16px",
+                        "sm": "8px",
+                        "margin-desktop": "32px",
+                        "unit": "4px",
+                        "gutter": "16px",
+                        "lg": "24px",
+                        "margin-mobile": "16px"
+                    },
+                    "fontFamily": {
+                        "label-xs": ["Inter"],
+                        "headline-md": ["Plus Jakarta Sans"],
+                        "body-lg": ["Plus Jakarta Sans"],
+                        "headline-lg-mobile": ["Plus Jakarta Sans"],
+                        "label-sm": ["Inter"],
+                        "headline-xl": ["Plus Jakarta Sans"],
+                        "body-md": ["Plus Jakarta Sans"],
+                        "headline-lg": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "label-xs": ["12px", { "lineHeight": "16px", "fontWeight": "700" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "headline-lg-mobile": ["24px", { "lineHeight": "32px", "fontWeight": "700" }],
+                        "label-sm": ["14px", { "lineHeight": "20px", "letterSpacing": "0.02em", "fontWeight": "600" }],
+                        "headline-xl": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700" }]
+                    },
+                    "boxShadow": {
+                        "premium-card": "0 4px 12px 0 rgba(11, 16, 38, 0.04)"
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #f7fafe;
+            color: #181c1f;
+            min-height: max(884px, 100dvh);
+        }
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .bg-streak-gradient {
+            background: linear-gradient(135deg, #151a31 0%, #07006c 100%);
+        }
+    </style>
+</head>
+<body class="bg-background min-h-screen pb-24 md:pb-0">
+    <!-- TopAppBar -->
+    <header class="docked full-width top-0 bg-surface shadow-sm bg-surface/80 backdrop-blur-md z-40 sticky">
+        <div class="flex justify-between items-center w-full px-margin-mobile md:px-margin-desktop py-4 max-w-7xl mx-auto">
+            <div class="flex items-center gap-sm">
+                <span class="material-symbols-outlined text-primary" data-icon="eco">eco</span>
+                <h1 class="font-headline-md text-headline-md font-bold text-primary tracking-tight">School Ecosystem</h1>
+            </div>
+            <!-- Header Links for desktop -->
+            <nav class="hidden md:flex items-center gap-lg">
+                <a class="text-secondary font-bold font-label-sm text-label-sm transition-colors" href="student-dashboard.html">Home</a>
+                <a class="text-on-surface-variant font-label-sm text-label-sm hover:bg-surface-container-high transition-colors px-3 py-2 rounded-lg" href="leaderboard.html">Leaderboard</a>
+                <a class="text-on-surface-variant font-label-sm text-label-sm hover:bg-surface-container-high transition-colors px-3 py-2 rounded-lg" href="profile.html">Profile &amp; QR</a>
+            </nav>
+            <div class="flex items-center">
+                <a href="profile.html" class="w-10 h-10 rounded-full overflow-hidden bg-surface-variant flex items-center justify-center cursor-pointer hover:bg-surface-container-high transition-colors hover:scale-95 duration-150">
+                    <img id="user-avatar" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCSb5kZjywGh-7Jf29MUuU48a1jitRYrrLFdJbU-bdxEECy8cySIhiA4xpAldBdQTLjCLOsADaznSVvWaxHe1LRKMvVLZ7FF1B8tIzHuyaVt2tvPgUhIiN4XEgQ_taY73zuEh4UUqPInmC2hLhR4lVg3Kfgxoowqkb6N7BUFofcONE5t9Xq55O68B350eEXmX0k85_sJJ-saP6z8Gq5CvMWM4N0eIJDUQUYM-N50uzdquPiVUAyqimV"/>
+                </a>
+            </div>
+        </div>
+    </header>
+    <!-- Main Content Grid -->
+    <main class="max-w-7xl mx-auto px-margin-mobile md:px-margin-desktop py-lg grid grid-cols-4 md:grid-cols-12 gap-gutter">
+        <!-- Welcome & High-Level Progress -->
+        <section class="col-span-4 md:col-span-8 flex flex-col gap-md">
+            <div class="mb-sm flex justify-between items-center">
+                <div>
+                    <h2 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-primary">Welcome back, <span id="welcome-name">Alex</span>!</h2>
+                    <p class="font-body-md text-body-md text-on-surface-variant mt-1">Ready to make an impact today?</p>
+                </div>
+                <!-- Log out for quick demonstration -->
+                <button onclick="logout()" class="md:hidden flex items-center gap-1 text-danger-red font-label-sm border border-danger-red/30 px-3 py-1.5 rounded-full hover:bg-danger-red/10 transition-colors">
+                    <span class="material-symbols-outlined text-[16px]">logout</span> Log out
+                </button>
+            </div>
+            <!-- Dashboard Bento Grid -->
+            <div class="grid grid-cols-4 md:grid-cols-8 gap-sm md:gap-md">
+                <!-- Eco-Points Progress Card -->
+                <div class="col-span-4 md:col-span-5 bg-surface-container-lowest rounded-xl shadow-premium-card p-md border border-outline-variant/20 flex flex-col justify-between hover:shadow-md transition-shadow relative overflow-hidden group">
+                    <div class="absolute -top-10 -right-10 w-32 h-32 bg-secondary/10 rounded-full blur-2xl group-hover:bg-secondary/20 transition-all"></div>
+                    <div>
+                        <div class="flex justify-between items-start mb-sm">
+                            <span class="font-label-sm text-label-sm text-muted-gray uppercase tracking-wider">Current Cycle</span>
+                            <span class="material-symbols-outlined text-secondary" data-icon="stars">stars</span>
+                        </div>
+                        <h3 class="font-headline-xl text-headline-xl text-primary font-bold"><span id="points-display">1,450</span> <span class="font-body-md text-body-md text-on-surface-variant font-normal">pts</span></h3>
+                    </div>
+                    <div class="mt-lg">
+                        <div class="flex justify-between font-label-xs text-label-xs text-on-surface-variant mb-xs">
+                            <span id="level-display">Level 4: Eco-Warrior</span>
+                            <span id="next-milestone">2,000 pts</span>
+                        </div>
+                        <!-- Progress Bar -->
+                        <div class="w-full h-3 bg-surface-container-high rounded-full overflow-hidden">
+                            <div id="points-progress" class="h-full bg-secondary rounded-full" style="width: 72%;"></div>
+                        </div>
+                        <p id="remaining-display" class="font-label-xs text-label-xs text-muted-gray mt-2 text-right">550 pts to Level 5</p>
+                    </div>
+                </div>
+                <!-- Streak Card -->
+                <div class="col-span-4 md:col-span-3 bg-streak-gradient rounded-xl shadow-premium-card p-md flex flex-col justify-center items-center text-center hover:shadow-lg transition-shadow relative overflow-hidden group">
+                    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-violet-accent/20 via-transparent to-transparent opacity-50 mix-blend-overlay"></div>
+                    <span class="material-symbols-outlined text-warning-amber text-5xl mb-sm group-hover:scale-110 transition-transform duration-300">local_fire_department</span>
+                    <h3 id="streak-display" class="font-headline-xl text-headline-xl text-surface-container-lowest font-black tracking-tight leading-none">12</h3>
+                    <span class="font-label-sm text-label-sm text-tertiary-fixed mt-1 uppercase tracking-widest">Day Streak</span>
+                    <p class="font-label-xs text-label-xs text-tertiary-fixed-dim mt-2 opacity-80">Don't break it now!</p>
+                </div>
+            </div>
+            <!-- Daily Status (Verification) -->
+            <div class="mt-md">
+                <div class="flex justify-between items-end mb-sm">
+                    <h3 class="font-headline-md text-headline-md text-primary">Daily Gear Status</h3>
+                </div>
+                <div class="grid grid-cols-2 gap-sm">
+                    <!-- Tumbler Status -->
+                    <div class="bg-surface-container-lowest rounded-xl shadow-premium-card p-sm md:p-md border border-outline-variant/20 flex flex-col md:flex-row items-center md:items-start gap-sm">
+                        <div class="w-12 h-12 rounded-full bg-eco-success/10 flex items-center justify-center shrink-0" id="tumbler-icon-bg">
+                            <span class="material-symbols-outlined text-eco-success" id="tumbler-icon">water_drop</span>
+                        </div>
+                        <div class="text-center md:text-left flex-1">
+                            <h4 class="font-label-sm text-label-sm text-primary">Reusable Tumbler</h4>
+                            <div id="tumbler-badge" class="mt-1 inline-flex items-center gap-xs px-2 py-1 bg-eco-success/10 text-eco-success rounded-full">
+                                <span class="material-symbols-outlined text-[14px]">check_circle</span>
+                                <span class="font-label-xs text-label-xs" id="tumbler-text">Verified Today</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Lunchbox Status -->
+                    <div class="bg-surface-container-lowest rounded-xl shadow-premium-card p-sm md:p-md border border-outline-variant/20 flex flex-col md:flex-row items-center md:items-start gap-sm">
+                        <div class="w-12 h-12 rounded-full bg-surface-container-high flex items-center justify-center shrink-0" id="lunchbox-icon-bg">
+                            <span class="material-symbols-outlined text-muted-gray" id="lunchbox-icon">lunch_dining</span>
+                        </div>
+                        <div class="text-center md:text-left flex-1">
+                            <h4 class="font-label-sm text-label-sm text-primary">Eco Lunchbox</h4>
+                            <div id="lunchbox-badge" class="mt-1 inline-flex items-center gap-xs px-2 py-1 bg-surface-container-high text-muted-gray rounded-full">
+                                <span class="material-symbols-outlined text-[14px]" id="lunchbox-check-icon">pending</span>
+                                <span class="font-label-xs text-label-xs" id="lunchbox-text">Not Scanned</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Sidebar / Secondary Content -->
+        <aside class="col-span-4 flex flex-col gap-md">
+            <!-- Class Ranking -->
+            <div class="bg-surface-container-lowest rounded-xl shadow-premium-card border border-outline-variant/20 overflow-hidden flex flex-col">
+                <div class="p-md border-b border-outline-variant/30 flex justify-between items-center bg-surface-container-low/50">
+                    <h3 class="font-label-sm text-label-sm text-primary uppercase tracking-wider">Class Ranking</h3>
+                    <a class="font-label-xs text-label-xs text-secondary hover:underline" href="leaderboard.html">View All</a>
+                </div>
+                <div class="p-sm flex flex-col gap-xs" id="class-ranking-list">
+                    <!-- Loaded dynamically via js -->
+                </div>
+            </div>
+            <!-- My Vouchers -->
+            <div class="bg-surface-container-lowest rounded-xl shadow-premium-card border border-outline-variant/20 overflow-hidden flex flex-col">
+                <div class="p-md border-b border-outline-variant/30 flex justify-between items-center bg-surface-container-low/50">
+                    <div class="flex items-center gap-xs">
+                        <span class="material-symbols-outlined text-primary text-[18px]">confirmation_number</span>
+                        <h3 class="font-label-sm text-label-sm text-primary uppercase tracking-wider">My Vouchers</h3>
+                    </div>
+                    <span class="font-label-xs text-label-xs text-secondary-container bg-secondary-container/10 px-2 py-0.5 rounded-full">2 Active</span>
+                </div>
+                <div class="p-md flex flex-col gap-sm">
+                    <div class="border border-dashed border-secondary/50 rounded-lg p-sm bg-surface-bright flex items-center justify-between hover:bg-surface-container-low transition-colors cursor-pointer group">
+                        <div class="flex items-center gap-sm">
+                            <div class="w-10 h-10 rounded-md bg-secondary/10 flex items-center justify-center text-secondary">
+                                <span class="material-symbols-outlined">fastfood</span>
+                            </div>
+                            <div>
+                                <p class="font-label-sm text-label-sm text-primary group-hover:text-secondary transition-colors">Rp 20.000 Off Canteen Lunch</p>
+                                <p class="font-label-xs text-label-xs text-muted-gray">Expires in 2 days</p>
+                            </div>
+                        </div>
+                        <span class="material-symbols-outlined text-outline-variant group-hover:text-secondary transition-colors">chevron_right</span>
+                    </div>
+                    <div class="border border-dashed border-outline-variant rounded-lg p-sm bg-surface-bright flex items-center justify-between hover:bg-surface-container-low transition-colors cursor-pointer group">
+                        <div class="flex items-center gap-sm">
+                            <div class="w-10 h-10 rounded-md bg-surface-container-high flex items-center justify-center text-on-surface-variant">
+                                <span class="material-symbols-outlined">local_cafe</span>
+                            </div>
+                            <div>
+                                <p class="font-label-sm text-label-sm text-primary">Free Drink Upgrade</p>
+                                <p class="font-label-xs text-label-xs text-muted-gray">Expires in 5 days</p>
+                            </div>
+                        </div>
+                        <span class="material-symbols-outlined text-outline-variant group-hover:text-primary transition-colors">chevron_right</span>
+                    </div>
+                </div>
+            </div>
+        </aside>
+    </main>
+    <!-- BottomNavBar -->
+    <nav class="md:hidden fixed bottom-0 w-full z-50 rounded-t-xl bg-surface-container-lowest border-t border-outline-variant bg-surface-container-lowest/90 backdrop-blur-xl shadow-lg flex justify-around items-center h-16 pb-safe px-4">
+        <a class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-full px-4 py-1 scale-90 duration-200" href="student-dashboard.html">
+            <span class="material-symbols-outlined">home</span>
+            <span class="font-label-xs text-label-xs mt-1">Home</span>
+        </a>
+        <a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-all" href="leaderboard.html">
+            <span class="material-symbols-outlined">leaderboard</span>
+            <span class="font-label-xs text-label-xs mt-1">Leaderboard</span>
+        </a>
+        <a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-all" href="profile.html">
+            <span class="material-symbols-outlined">person</span>
+            <span class="font-label-xs text-label-xs mt-1">Profile</span>
+        </a>
+    </nav>
+
+    <script src="shared.js"></script>
+    <script>
+        checkAuth(['student']);
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const state = getAppState();
+            const user = getLoggedInUser();
+            const student = state.students.find(s => s.name === user.name) || state.students[0];
+
+            // Welcome Name
+            document.getElementById("welcome-name").innerText = student.name.split(' ')[0];
+            document.getElementById("user-avatar").src = student.avatar;
+
+            // Stats
+            const pts = student.points;
+            document.getElementById("points-display").innerText = pts.toLocaleString();
+            document.getElementById("streak-display").innerText = student.streak;
+
+            // Levels definition
+            let levelName = "Level 1: Eco-Novice";
+            let nextMilestoneVal = 500;
+            let currentBase = 0;
+            
+            if (pts >= 2000) {
+                levelName = "Level 5: Eco-Champion";
+                nextMilestoneVal = 5000;
+                currentBase = 2000;
+            } else if (pts >= 1000) {
+                levelName = "Level 4: Eco-Warrior";
+                nextMilestoneVal = 2000;
+                currentBase = 1000;
+            } else if (pts >= 500) {
+                levelName = "Level 3: Eco-Scout";
+                nextMilestoneVal = 1000;
+                currentBase = 500;
+            } else if (pts >= 200) {
+                levelName = "Level 2: Eco-Trainee";
+                nextMilestoneVal = 500;
+                currentBase = 200;
+            }
+
+            document.getElementById("level-display").innerText = levelName;
+            document.getElementById("next-milestone").innerText = nextMilestoneVal.toLocaleString() + " pts";
+            
+            const progressPct = ((pts - currentBase) / (nextMilestoneVal - currentBase)) * 100;
+            document.getElementById("points-progress").style.width = `${Math.min(100, Math.max(0, progressPct))}%`;
+            document.getElementById("remaining-display").innerText = `${(nextMilestoneVal - pts).toLocaleString()} pts to next Level`;
+
+            // Daily Gear Verification Badges
+            if (student.tumblerScanned) {
+                document.getElementById("tumbler-icon-bg").className = "w-12 h-12 rounded-full bg-eco-success/10 flex items-center justify-center shrink-0";
+                document.getElementById("tumbler-icon").className = "material-symbols-outlined text-eco-success";
+                document.getElementById("tumbler-badge").className = "mt-1 inline-flex items-center gap-xs px-2 py-1 bg-eco-success/10 text-eco-success rounded-full";
+                document.getElementById("tumbler-text").innerText = "Verified Today";
+            } else {
+                document.getElementById("tumbler-icon-bg").className = "w-12 h-12 rounded-full bg-surface-container-high flex items-center justify-center shrink-0";
+                document.getElementById("tumbler-icon").className = "material-symbols-outlined text-muted-gray";
+                document.getElementById("tumbler-badge").className = "mt-1 inline-flex items-center gap-xs px-2 py-1 bg-surface-container-high text-muted-gray rounded-full";
+                document.getElementById("tumbler-text").innerText = "Not Scanned";
+            }
+
+            if (student.lunchboxScanned) {
+                document.getElementById("lunchbox-icon-bg").className = "w-12 h-12 rounded-full bg-eco-success/10 flex items-center justify-center shrink-0";
+                document.getElementById("lunchbox-icon").className = "material-symbols-outlined text-eco-success";
+                document.getElementById("lunchbox-badge").className = "mt-1 inline-flex items-center gap-xs px-2 py-1 bg-eco-success/10 text-eco-success rounded-full";
+                document.getElementById("lunchbox-check-icon").innerText = "check_circle";
+                document.getElementById("lunchbox-text").innerText = "Verified Today";
+            } else {
+                document.getElementById("lunchbox-icon-bg").className = "w-12 h-12 rounded-full bg-surface-container-high flex items-center justify-center shrink-0";
+                document.getElementById("lunchbox-icon").className = "material-symbols-outlined text-muted-gray";
+                document.getElementById("lunchbox-badge").className = "mt-1 inline-flex items-center gap-xs px-2 py-1 bg-surface-container-high text-muted-gray rounded-full";
+                document.getElementById("lunchbox-check-icon").innerText = "pending";
+                document.getElementById("lunchbox-text").innerText = "Not Scanned";
+            }
+
+            // Load Class Ranking List (Mock Top 3)
+            const sortedStudents = [...state.students].sort((a, b) => b.points - a.points).slice(0, 3);
+            const rankingList = document.getElementById("class-ranking-list");
+            rankingList.innerHTML = "";
+
+            sortedStudents.forEach((stud, idx) => {
+                const rank = idx + 1;
+                const isCurrentUser = stud.name === student.name;
+                const item = document.createElement("div");
+                if (isCurrentUser) {
+                    item.className = "flex items-center gap-sm p-sm rounded-lg bg-secondary/5 border border-secondary/20 relative";
+                    item.innerHTML = `
+                        <div class="absolute left-0 top-0 bottom-0 w-1 bg-secondary rounded-l-lg"></div>
+                        <div class="w-6 font-label-sm text-label-sm text-muted-gray font-bold text-center">${rank}</div>
+                        <div class="w-8 h-8 rounded-full bg-surface-variant overflow-hidden shrink-0 border border-secondary">
+                            <img class="w-full h-full object-cover" src="${stud.avatar}"/>
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <p class="font-label-sm text-label-sm text-primary font-bold truncate">You</p>
+                        </div>
+                        <div class="font-label-xs text-label-xs text-secondary font-bold">${stud.points.toLocaleString()}</div>
+                    `;
+                } else {
+                    item.className = "flex items-center gap-sm p-sm rounded-lg bg-surface-container-lowest hover:bg-surface-container-low transition-colors";
+                    item.innerHTML = `
+                        <div class="w-6 font-label-sm text-label-sm ${rank === 1 ? 'text-warning-amber' : 'text-muted-gray'} font-bold text-center">${rank}</div>
+                        <div class="w-8 h-8 rounded-full bg-surface-variant overflow-hidden shrink-0">
+                            <img class="w-full h-full object-cover" src="${stud.avatar}"/>
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <p class="font-label-sm text-label-sm text-primary truncate">${stud.name}</p>
+                        </div>
+                        <div class="font-label-xs text-label-xs text-secondary font-bold">${stud.points.toLocaleString()}</div>
+                    `;
+                }
+                rankingList.appendChild(item);
+            });
+        });
+    </script>
+</body>
+</html>

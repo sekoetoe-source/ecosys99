@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html class="light" lang="id">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>SMP Negeri 99 Jakarta - Eco Ecosystem</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&amp;family=Inter:wght@400;600;700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    <script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "background": "#f7fafe",
+                      "outline": "#77767e",
+                      "secondary-fixed": "#d9e2ff",
+                      "on-primary-fixed": "#151a31",
+                      "on-tertiary-container": "#7073ff",
+                      "surface-container-lowest": "#ffffff",
+                      "tertiary-container": "#07006c",
+                      "error-container": "#ffdad6",
+                      "on-error": "#ffffff",
+                      "tertiary-fixed": "#e1e0ff",
+                      "on-tertiary-fixed": "#07006c",
+                      "secondary": "#0057c2",
+                      "error": "#ba1a1a",
+                      "on-secondary-fixed-variant": "#004398",
+                      "eco-success": "#16865B",
+                      "tertiary-fixed-dim": "#c0c1ff",
+                      "on-primary-fixed-variant": "#41455e",
+                      "on-surface-variant": "#46464d",
+                      "on-surface": "#181c1f",
+                      "warning-amber": "#F59E0B",
+                      "surface-container-low": "#f1f4f8",
+                      "primary": "#000000",
+                      "on-background": "#181c1f",
+                      "on-primary-container": "#7e829e",
+                      "danger-red": "#EF4444",
+                      "primary-fixed": "#dde1ff",
+                      "inverse-on-surface": "#eef1f5",
+                      "surface-variant": "#e0e3e7",
+                      "surface": "#f7fafe",
+                      "on-primary": "#ffffff",
+                      "tertiary": "#000000",
+                      "primary-fixed-dim": "#c1c5e3",
+                      "surface-bright": "#f7fafe",
+                      "violet-accent": "#8B5CF6",
+                      "inverse-primary": "#c1c5e3",
+                      "on-error-container": "#93000a",
+                      "secondary-fixed-dim": "#afc6ff",
+                      "inverse-surface": "#2d3134",
+                      "on-tertiary-fixed-variant": "#2f2ebe",
+                      "outline-variant": "#c7c5ce",
+                      "primary-container": "#151a31",
+                      "on-secondary-container": "#fefcff",
+                      "dark-navy-text": "#111827",
+                      "surface-tint": "#585d77",
+                      "on-secondary": "#ffffff",
+                      "surface-container-highest": "#e0e3e7",
+                      "surface-container": "#ebeef2",
+                      "surface-container-high": "#e5e8ec",
+                      "muted-gray": "#667085",
+                      "on-tertiary": "#ffffff",
+                      "surface-dim": "#d7dade",
+                      "on-secondary-fixed": "#001a43",
+                      "cool-white": "#F9FAFF",
+                      "secondary-container": "#246fe7"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "xl": "40px",
+                      "xs": "4px",
+                      "md": "16px",
+                      "sm": "8px",
+                      "margin-desktop": "32px",
+                      "unit": "4px",
+                      "gutter": "16px",
+                      "lg": "24px",
+                      "margin-mobile": "16px"
+              },
+              "fontFamily": {
+                      "label-xs": [
+                               "Inter"
+                      ],
+                      "headline-md": [
+                               "Plus Jakarta Sans"
+                      ],
+                      "body-lg": [
+                               "Plus Jakarta Sans"
+                      ],
+                      "headline-lg-mobile": [
+                               "Plus Jakarta Sans"
+                      ],
+                      "label-sm": [
+                               "Inter"
+                      ],
+                      "headline-xl": [
+                               "Plus Jakarta Sans"
+                      ],
+                      "body-md": [
+                               "Plus Jakarta Sans"
+                      ],
+                      "headline-lg": [
+                               "Plus Jakarta Sans"
+                      ]
+              },
+              "fontSize": {
+                      "label-xs": [
+                               "12px",
+                               {
+                                       "lineHeight": "16px",
+                                       "fontWeight": "700"
+                               }
+                      ],
+                      "headline-md": [
+                               "24px",
+                               {
+                                       "lineHeight": "32px",
+                                       "fontWeight": "600"
+                               }
+                      ],
+                      "body-lg": [
+                               "18px",
+                               {
+                                       "lineHeight": "28px",
+                                       "fontWeight": "400"
+                               }
+                      ],
+                      "headline-lg-mobile": [
+                               "24px",
+                               {
+                                       "lineHeight": "32px",
+                                       "fontWeight": "700"
+                               }
+                      ],
+                      "label-sm": [
+                               "14px",
+                               {
+                                       "lineHeight": "20px",
+                                       "letterSpacing": "0.02em",
+                                       "fontWeight": "600"
+                               }
+                      ],
+                      "headline-xl": [
+                               "48px",
+                               {
+                                       "lineHeight": "56px",
+                                       "letterSpacing": "-0.02em",
+                                       "fontWeight": "700"
+                               }
+                      ],
+                      "body-md": [
+                               "16px",
+                               {
+                                       "lineHeight": "24px",
+                                       "fontWeight": "400"
+                               }
+                      ],
+                      "headline-lg": [
+                               "32px",
+                               {
+                                       "lineHeight": "40px",
+                                       "letterSpacing": "-0.01em",
+                                       "fontWeight": "700"
+                               }
+                      ]
+              }
+      },
+          },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .fill-icon {
+            font-variation-settings: 'FILL' 1;
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 8px 32px 0 rgba(11, 16, 38, 0.04);
+        }
+        .bg-pattern {
+            background-color: #f7fafe;
+            background-image: radial-gradient(#0057c2 0.5px, transparent 0.5px), radial-gradient(#0057c2 0.5px, #f7fafe 0.5px);
+            background-size: 20px 20px;
+            background-position: 0 0, 10px 10px;
+            background-attachment: fixed;
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md antialiased min-h-screen flex flex-col">
+    <!-- TopAppBar -->
+    <header class="docked full-width top-0 bg-surface/80 backdrop-blur-md shadow-sm fixed w-full z-40">
+        <div class="flex justify-between items-center w-full px-margin-mobile md:px-margin-desktop py-4 max-w-7xl mx-auto">
+            <div class="flex items-center gap-sm">
+                <span class="material-symbols-outlined text-primary fill-icon" style="font-size: 28px;">eco</span>
+                <span class="font-headline-md text-headline-md font-bold text-primary tracking-tight">School Ecosystem</span>
+            </div>
+            <nav class="hidden md:flex items-center gap-lg">
+                <a class="text-secondary font-bold font-label-sm text-label-sm transition-colors" href="index.html">Beranda</a>
+                <a class="text-on-surface-variant font-label-sm text-label-sm hover:bg-surface-container-high transition-colors px-3 py-2 rounded-lg" href="#about">Tentang</a>
+                <a class="text-on-surface-variant font-label-sm text-label-sm hover:bg-surface-container-high transition-colors px-3 py-2 rounded-lg" href="leaderboard.html">Leaderboard</a>
+            </nav>
+            <div class="flex items-center gap-md">
+                <div class="flex bg-surface-container-low rounded-full p-1 border border-outline-variant/30">
+                    <button class="bg-surface text-on-surface font-label-xs text-label-xs px-3 py-1 rounded-full shadow-sm">ID</button>
+                    <button class="text-on-surface-variant font-label-xs text-label-xs px-3 py-1 rounded-full hover:text-primary transition-colors">EN</button>
+                </div>
+                <!-- Profile Avatar linked to session -->
+                <a id="profile-link" href="login.html">
+                    <img id="profile-img" alt="Profile" class="w-10 h-10 rounded-full border border-outline-variant/50 object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDMBuwoP0qXdQCvBIxWrWLfL_U80i2Qv9Ly5Sl-nQxWCXMguJI7KDnAM5NIoqiZ5XujRyg9FHp1LzLiaZdP2FTSElzwEUM2crMrZCAOAxG55_lJhLpJofvyu9og-OH39T5ERik5K3mJpIYhNgexBgGMSj1DbR5sU4e2cmmsiBFdpGtHcTgf5b0Zjxj50uJ_biAbuyA6YLgFjT6R5WklfvK_AfB16ZX-blOfKlA9JeTVuvhMY6YjbHyGMxN9CcH44lEC0A"/>
+                </a>
+            </div>
+        </div>
+    </header>
+    <main class="flex-grow pt-[88px] relative bg-pattern">
+        <!-- Hero Section -->
+        <section class="max-w-7xl mx-auto px-margin-mobile md:px-margin-desktop py-xl md:py-[80px] relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-xl items-center">
+                <div class="flex flex-col gap-lg">
+                    <div class="inline-flex items-center gap-xs bg-secondary-fixed text-on-secondary-fixed px-3 py-1 rounded-full w-fit">
+                        <span class="material-symbols-outlined" style="font-size: 16px;">verified</span>
+                        <span class="font-label-xs text-label-xs">Resmi SMPN 99 Jakarta</span>
+                    </div>
+                    <h1 class="font-headline-xl text-headline-xl md:text-[64px] md:leading-[72px] font-bold text-primary tracking-tight">
+                        Wujudkan Sekolah <br class="hidden md:block"/>
+                        <span class="text-secondary">Bebas Sampah</span> <br class="hidden md:block"/>
+                        Bersama-sama.
+                    </h1>
+                    <p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl">
+                        Platform manajemen sampah sekolah berbasis poin. Bawa botolmu, scan QR, kumpulkan poin, dan jadilah pahlawan lingkungan sekolah!
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-md mt-sm">
+                        <a href="login.html" class="bg-secondary text-on-secondary font-label-sm text-label-sm px-8 py-3 rounded-full hover:bg-on-secondary-fixed-variant transition-colors flex items-center justify-center gap-sm">
+                            <span class="material-symbols-outlined">qr_code_scanner</span>
+                            Mulai Scan Sekarang
+                        </a>
+                        <a href="#about" class="bg-transparent border border-outline text-primary font-label-sm text-label-sm px-8 py-3 rounded-full hover:bg-surface-container-low transition-colors flex items-center justify-center gap-sm">
+                            Pelajari Lebih Lanjut
+                        </a>
+                    </div>
+                    <!-- Mini Stats in Hero -->
+                    <div class="grid grid-cols-3 gap-sm mt-lg">
+                        <div class="glass-panel p-md rounded-xl flex flex-col gap-xs">
+                            <span class="font-headline-lg text-headline-lg font-bold text-primary">12.5K</span>
+                            <span class="font-label-xs text-label-xs text-on-surface-variant uppercase tracking-wider">Botol Terkumpul</span>
+                        </div>
+                        <div class="glass-panel p-md rounded-xl flex flex-col gap-xs">
+                            <span class="font-headline-lg text-headline-lg font-bold text-secondary">450</span>
+                            <span class="font-label-xs text-label-xs text-on-surface-variant uppercase tracking-wider">Siswa Aktif</span>
+                        </div>
+                        <div class="glass-panel p-md rounded-xl flex flex-col gap-xs">
+                            <span class="font-headline-lg text-headline-lg font-bold text-eco-success">85kg</span>
+                            <span class="font-label-xs text-label-xs text-on-surface-variant uppercase tracking-wider">CO2 Dihemat</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative h-[400px] md:h-[600px] rounded-3xl overflow-hidden shadow-2xl group">
+                    <img alt="SMPN 99 Jakarta Eco Program Logo" class="w-full h-full object-contain bg-white p-xl transition-transform duration-700 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC8stGe7FqXfOCc0ASBnWF7dY3f9WvcgVsj9Xi44wVhp2kgTVnpEux3_ozAmlDWtDVHfSPZgadwdaYPOsYqYtN77KPhC7eLylX3EZEvRgwc8hoDayMN217_XyVGX9322TTQA9y4zl7_qhJYqOBzIW-j1A51qZpq7SqdPsL4hE7Pe7QM50dAiF1aBhwEETKCTHIpN2wIfGyq8c3O0y2LFTKe4TG-H6zLVtcCvXBJ6u7pdkOB5XLp6qpayQetoLyD0_3tWA"/>
+                    <div class="absolute inset-0 bg-gradient-to-t from-primary-container/80 to-transparent flex items-end p-xl">
+                        <div class="glass-panel w-full p-md rounded-xl flex items-center justify-between text-white border-white/20">
+                            <div>
+                                <h3 class="font-headline-md text-headline-md font-bold text-white">Target Bulan Ini</h3>
+                                <p class="font-body-md text-body-md text-white/80">15,000 Botol Plastik</p>
+                            </div>
+                            <div class="w-16 h-16 rounded-full border-4 border-eco-success border-t-white/30 flex items-center justify-center">
+                                <span class="font-label-sm text-label-sm font-bold text-white">83%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Footer -->
+        <footer class="w-full mt-xl bg-surface-container-lowest border-t border-outline-variant/30">
+            <div class="max-w-7xl mx-auto px-margin-desktop py-xl flex flex-col md:flex-row justify-between items-center gap-md">
+                <span class="font-headline-lg-mobile text-headline-lg-mobile font-bold text-primary">School Ecosystem</span>
+                <p class="font-body-md text-body-md text-muted-gray text-center md:text-left">© 2024 School Ecosystem. Premium Sustainability Solutions.</p>
+                <div class="flex gap-md font-label-xs text-label-xs">
+                    <a class="text-muted-gray hover:text-secondary underline decoration-2 underline-offset-4 transition-all" href="#">Privacy Policy</a>
+                    <a class="text-muted-gray hover:text-secondary underline decoration-2 underline-offset-4 transition-all" href="#">Contact Support</a>
+                    <a class="text-muted-gray hover:text-secondary underline decoration-2 underline-offset-4 transition-all" href="#">Terms of Service</a>
+                </div>
+            </div>
+        </footer>
+    </main>
+    <!-- BottomNavBar (Mobile Only) -->
+    <nav class="fixed bottom-0 w-full z-50 rounded-t-xl border-t border-outline-variant bg-surface-container-lowest/90 backdrop-blur-xl shadow-lg md:hidden">
+        <div class="flex justify-around items-center h-16 pb-safe px-4">
+            <a class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-full px-4 py-1 scale-90 duration-200" href="index.html">
+                <span class="material-symbols-outlined fill-icon">home</span>
+                <span class="font-label-xs text-label-xs mt-1">Home</span>
+            </a>
+            <a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-all" href="student-dashboard.html">
+                <span class="material-symbols-outlined">query_stats</span>
+                <span class="font-label-xs text-label-xs mt-1">Progress</span>
+            </a>
+            <a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-all" href="leaderboard.html">
+                <span class="material-symbols-outlined">leaderboard</span>
+                <span class="font-label-xs text-label-xs mt-1">Leaderboard</span>
+            </a>
+            <a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-all" href="profile.html">
+                <span class="material-symbols-outlined">person</span>
+                <span class="font-label-xs text-label-xs mt-1">Profile</span>
+            </a>
+        </div>
+    </nav>
+    <script src="shared.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const user = getLoggedInUser();
+            if (user) {
+                document.getElementById("profile-img").src = user.avatar;
+                document.getElementById("profile-link").href = user.role === "student" ? "student-dashboard.html" : (user.role === "officer" ? "officer-scanner.html" : "admin-dashboard.html");
+            }
+        });
+    </script>
+</body>
+</html>
