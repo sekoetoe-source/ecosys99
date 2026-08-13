@@ -140,9 +140,9 @@
             </div>
             <!-- Header Links for desktop -->
             <nav class="hidden md:flex items-center gap-lg">
-                <a class="text-secondary font-bold font-label-sm text-label-sm transition-colors" href="student-dashboard.html">Home</a>
-                <a class="text-on-surface-variant font-label-sm text-label-sm hover:bg-surface-container-high transition-colors px-3 py-2 rounded-lg" href="leaderboard.html">Leaderboard</a>
-                <a class="text-on-surface-variant font-label-sm text-label-sm hover:bg-surface-container-high transition-colors px-3 py-2 rounded-lg" href="profile.html">Profile &amp; QR</a>
+                <a class="text-secondary font-bold font-label-sm text-label-sm transition-colors" href="student-dashboard.html">Beranda</a>
+                <a class="text-on-surface-variant font-label-sm text-label-sm hover:bg-surface-container-high transition-colors px-3 py-2 rounded-lg" href="leaderboard.html">Papan Peringkat</a>
+                <a class="text-on-surface-variant font-label-sm text-label-sm hover:bg-surface-container-high transition-colors px-3 py-2 rounded-lg" href="profile.html">Profil &amp; QR</a>
             </nav>
             <div class="flex items-center">
                 <a href="profile.html" class="w-10 h-10 rounded-full overflow-hidden bg-surface-variant flex items-center justify-center cursor-pointer hover:bg-surface-container-high transition-colors hover:scale-95 duration-150">
@@ -157,12 +157,12 @@
         <section class="col-span-4 md:col-span-8 flex flex-col gap-md">
             <div class="mb-sm flex justify-between items-center">
                 <div>
-                    <h2 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-primary">Welcome back, <span id="welcome-name">Alex</span>!</h2>
-                    <p class="font-body-md text-body-md text-on-surface-variant mt-1">Ready to make an impact today?</p>
+                    <h2 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-primary">Selamat datang kembali, <span id="welcome-name">Alex</span>!</h2>
+                    <p class="font-body-md text-body-md text-on-surface-variant mt-1">Siap memberikan dampak hari ini?</p>
                 </div>
                 <!-- Log out for quick demonstration -->
                 <button onclick="logout()" class="md:hidden flex items-center gap-1 text-danger-red font-label-sm border border-danger-red/30 px-3 py-1.5 rounded-full hover:bg-danger-red/10 transition-colors">
-                    <span class="material-symbols-outlined text-[16px]">logout</span> Log out
+                    <span class="material-symbols-outlined text-[16px]">logout</span> Keluar
                 </button>
             </div>
             <!-- Dashboard Bento Grid -->
@@ -172,21 +172,21 @@
                     <div class="absolute -top-10 -right-10 w-32 h-32 bg-secondary/10 rounded-full blur-2xl group-hover:bg-secondary/20 transition-all"></div>
                     <div>
                         <div class="flex justify-between items-start mb-sm">
-                            <span class="font-label-sm text-label-sm text-muted-gray uppercase tracking-wider">Current Cycle</span>
+                            <span class="font-label-sm text-label-sm text-muted-gray uppercase tracking-wider">Siklus Saat Ini</span>
                             <span class="material-symbols-outlined text-secondary" data-icon="stars">stars</span>
                         </div>
-                        <h3 class="font-headline-xl text-headline-xl text-primary font-bold"><span id="points-display">1,450</span> <span class="font-body-md text-body-md text-on-surface-variant font-normal">pts</span></h3>
+                        <h3 class="font-headline-xl text-headline-xl text-primary font-bold"><span id="points-display">1,450</span> <span class="font-body-md text-body-md text-on-surface-variant font-normal">poin</span></h3>
                     </div>
                     <div class="mt-lg">
                         <div class="flex justify-between font-label-xs text-label-xs text-on-surface-variant mb-xs">
-                            <span id="level-display">Level 4: Eco-Warrior</span>
-                            <span id="next-milestone">2,000 pts</span>
+                            <span id="level-display">Level 4: Kesatria Eco</span>
+                            <span id="next-milestone">2,000 poin</span>
                         </div>
                         <!-- Progress Bar -->
                         <div class="w-full h-3 bg-surface-container-high rounded-full overflow-hidden">
                             <div id="points-progress" class="h-full bg-secondary rounded-full" style="width: 72%;"></div>
                         </div>
-                        <p id="remaining-display" class="font-label-xs text-label-xs text-muted-gray mt-2 text-right">550 pts to Level 5</p>
+                        <p id="remaining-display" class="font-label-xs text-label-xs text-muted-gray mt-2 text-right">550 poin ke Level 5</p>
                     </div>
                 </div>
                 <!-- Streak Card -->
@@ -194,14 +194,14 @@
                     <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-violet-accent/20 via-transparent to-transparent opacity-50 mix-blend-overlay"></div>
                     <span class="material-symbols-outlined text-warning-amber text-5xl mb-sm group-hover:scale-110 transition-transform duration-300">local_fire_department</span>
                     <h3 id="streak-display" class="font-headline-xl text-headline-xl text-surface-container-lowest font-black tracking-tight leading-none">12</h3>
-                    <span class="font-label-sm text-label-sm text-tertiary-fixed mt-1 uppercase tracking-widest">Day Streak</span>
-                    <p class="font-label-xs text-label-xs text-tertiary-fixed-dim mt-2 opacity-80">Don't break it now!</p>
+                    <span class="font-label-sm text-label-sm text-tertiary-fixed mt-1 uppercase tracking-widest">Streak Hari</span>
+                    <p class="font-label-xs text-label-xs text-tertiary-fixed-dim mt-2 opacity-80">Jangan putus sekarang!</p>
                 </div>
             </div>
             <!-- Daily Status (Verification) -->
             <div class="mt-md">
                 <div class="flex justify-between items-end mb-sm">
-                    <h3 class="font-headline-md text-headline-md text-primary">Daily Gear Status</h3>
+                    <h3 class="font-headline-md text-headline-md text-primary">Status Perlengkapan Harian</h3>
                 </div>
                 <div class="grid grid-cols-2 gap-sm">
                     <!-- Tumbler Status -->
@@ -210,10 +210,10 @@
                             <span class="material-symbols-outlined text-eco-success" id="tumbler-icon">water_drop</span>
                         </div>
                         <div class="text-center md:text-left flex-1">
-                            <h4 class="font-label-sm text-label-sm text-primary">Reusable Tumbler</h4>
+                            <h4 class="font-label-sm text-label-sm text-primary">Botol Minum Reusable</h4>
                             <div id="tumbler-badge" class="mt-1 inline-flex items-center gap-xs px-2 py-1 bg-eco-success/10 text-eco-success rounded-full">
                                 <span class="material-symbols-outlined text-[14px]">check_circle</span>
-                                <span class="font-label-xs text-label-xs" id="tumbler-text">Verified Today</span>
+                                <span class="font-label-xs text-label-xs" id="tumbler-text">Terverifikasi Hari Ini</span>
                             </div>
                         </div>
                     </div>
@@ -223,10 +223,10 @@
                             <span class="material-symbols-outlined text-muted-gray" id="lunchbox-icon">lunch_dining</span>
                         </div>
                         <div class="text-center md:text-left flex-1">
-                            <h4 class="font-label-sm text-label-sm text-primary">Eco Lunchbox</h4>
+                            <h4 class="font-label-sm text-label-sm text-primary">Kotak Makan Eco</h4>
                             <div id="lunchbox-badge" class="mt-1 inline-flex items-center gap-xs px-2 py-1 bg-surface-container-high text-muted-gray rounded-full">
                                 <span class="material-symbols-outlined text-[14px]" id="lunchbox-check-icon">pending</span>
-                                <span class="font-label-xs text-label-xs" id="lunchbox-text">Not Scanned</span>
+                                <span class="font-label-xs text-label-xs" id="lunchbox-text">Belum Dipindai</span>
                             </div>
                         </div>
                     </div>
@@ -238,8 +238,8 @@
             <!-- Class Ranking -->
             <div class="bg-surface-container-lowest rounded-xl shadow-premium-card border border-outline-variant/20 overflow-hidden flex flex-col">
                 <div class="p-md border-b border-outline-variant/30 flex justify-between items-center bg-surface-container-low/50">
-                    <h3 class="font-label-sm text-label-sm text-primary uppercase tracking-wider">Class Ranking</h3>
-                    <a class="font-label-xs text-label-xs text-secondary hover:underline" href="leaderboard.html">View All</a>
+                    <h3 class="font-label-sm text-label-sm text-primary uppercase tracking-wider">Peringkat Kelas</h3>
+                    <a class="font-label-xs text-label-xs text-secondary hover:underline" href="leaderboard.html">Lihat Semua</a>
                 </div>
                 <div class="p-sm flex flex-col gap-xs" id="class-ranking-list">
                     <!-- Loaded dynamically via js -->
@@ -250,9 +250,9 @@
                 <div class="p-md border-b border-outline-variant/30 flex justify-between items-center bg-surface-container-low/50">
                     <div class="flex items-center gap-xs">
                         <span class="material-symbols-outlined text-primary text-[18px]">confirmation_number</span>
-                        <h3 class="font-label-sm text-label-sm text-primary uppercase tracking-wider">My Vouchers</h3>
+                        <h3 class="font-label-sm text-label-sm text-primary uppercase tracking-wider">Voucher Saya</h3>
                     </div>
-                    <span class="font-label-xs text-label-xs text-secondary-container bg-secondary-container/10 px-2 py-0.5 rounded-full">2 Active</span>
+                    <span class="font-label-xs text-label-xs text-secondary-container bg-secondary-container/10 px-2 py-0.5 rounded-full">2 Aktif</span>
                 </div>
                 <div class="p-md flex flex-col gap-sm">
                     <div class="border border-dashed border-secondary/50 rounded-lg p-sm bg-surface-bright flex items-center justify-between hover:bg-surface-container-low transition-colors cursor-pointer group">
@@ -261,8 +261,8 @@
                                 <span class="material-symbols-outlined">fastfood</span>
                             </div>
                             <div>
-                                <p class="font-label-sm text-label-sm text-primary group-hover:text-secondary transition-colors">Rp 20.000 Off Canteen Lunch</p>
-                                <p class="font-label-xs text-label-xs text-muted-gray">Expires in 2 days</p>
+                                <p class="font-label-sm text-label-sm text-primary group-hover:text-secondary transition-colors">Potongan Rp 20.000 Makan Kantin</p>
+                                <p class="font-label-xs text-label-xs text-muted-gray">Kedaluwarsa dalam 2 hari</p>
                             </div>
                         </div>
                         <span class="material-symbols-outlined text-outline-variant group-hover:text-secondary transition-colors">chevron_right</span>
@@ -273,8 +273,8 @@
                                 <span class="material-symbols-outlined">local_cafe</span>
                             </div>
                             <div>
-                                <p class="font-label-sm text-label-sm text-primary">Free Drink Upgrade</p>
-                                <p class="font-label-xs text-label-xs text-muted-gray">Expires in 5 days</p>
+                                <p class="font-label-sm text-label-sm text-primary">Gratis Upgrade Minuman</p>
+                                <p class="font-label-xs text-label-xs text-muted-gray">Kedaluwarsa dalam 5 hari</p>
                             </div>
                         </div>
                         <span class="material-symbols-outlined text-outline-variant group-hover:text-primary transition-colors">chevron_right</span>
@@ -287,15 +287,15 @@
     <nav class="md:hidden fixed bottom-0 w-full z-50 rounded-t-xl bg-surface-container-lowest border-t border-outline-variant bg-surface-container-lowest/90 backdrop-blur-xl shadow-lg flex justify-around items-center h-16 pb-safe px-4">
         <a class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-full px-4 py-1 scale-90 duration-200" href="student-dashboard.html">
             <span class="material-symbols-outlined">home</span>
-            <span class="font-label-xs text-label-xs mt-1">Home</span>
+            <span class="font-label-xs text-label-xs mt-1">Beranda</span>
         </a>
         <a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-all" href="leaderboard.html">
             <span class="material-symbols-outlined">leaderboard</span>
-            <span class="font-label-xs text-label-xs mt-1">Leaderboard</span>
+            <span class="font-label-xs text-label-xs mt-1">Peringkat</span>
         </a>
         <a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-all" href="profile.html">
             <span class="material-symbols-outlined">person</span>
-            <span class="font-label-xs text-label-xs mt-1">Profile</span>
+            <span class="font-label-xs text-label-xs mt-1">Profil</span>
         </a>
     </nav>
 
@@ -318,46 +318,46 @@
             document.getElementById("streak-display").innerText = student.streak;
 
             // Levels definition
-            let levelName = "Level 1: Eco-Novice";
+            let levelName = "Level 1: Pemula Eco";
             let nextMilestoneVal = 500;
             let currentBase = 0;
             
             if (pts >= 2000) {
-                levelName = "Level 5: Eco-Champion";
+                levelName = "Level 5: Jawara Eco";
                 nextMilestoneVal = 5000;
                 currentBase = 2000;
             } else if (pts >= 1000) {
-                levelName = "Level 4: Eco-Warrior";
+                levelName = "Level 4: Kesatria Eco";
                 nextMilestoneVal = 2000;
                 currentBase = 1000;
             } else if (pts >= 500) {
-                levelName = "Level 3: Eco-Scout";
+                levelName = "Level 3: Pramuka Eco";
                 nextMilestoneVal = 1000;
                 currentBase = 500;
             } else if (pts >= 200) {
-                levelName = "Level 2: Eco-Trainee";
+                levelName = "Level 2: Calon Eco";
                 nextMilestoneVal = 500;
                 currentBase = 200;
             }
 
             document.getElementById("level-display").innerText = levelName;
-            document.getElementById("next-milestone").innerText = nextMilestoneVal.toLocaleString() + " pts";
+            document.getElementById("next-milestone").innerText = nextMilestoneVal.toLocaleString() + " poin";
             
             const progressPct = ((pts - currentBase) / (nextMilestoneVal - currentBase)) * 100;
             document.getElementById("points-progress").style.width = `${Math.min(100, Math.max(0, progressPct))}%`;
-            document.getElementById("remaining-display").innerText = `${(nextMilestoneVal - pts).toLocaleString()} pts to next Level`;
+            document.getElementById("remaining-display").innerText = `${(nextMilestoneVal - pts).toLocaleString()} poin ke Level berikutnya`;
 
             // Daily Gear Verification Badges
             if (student.tumblerScanned) {
                 document.getElementById("tumbler-icon-bg").className = "w-12 h-12 rounded-full bg-eco-success/10 flex items-center justify-center shrink-0";
                 document.getElementById("tumbler-icon").className = "material-symbols-outlined text-eco-success";
                 document.getElementById("tumbler-badge").className = "mt-1 inline-flex items-center gap-xs px-2 py-1 bg-eco-success/10 text-eco-success rounded-full";
-                document.getElementById("tumbler-text").innerText = "Verified Today";
+                document.getElementById("tumbler-text").innerText = "Terverifikasi Hari Ini";
             } else {
                 document.getElementById("tumbler-icon-bg").className = "w-12 h-12 rounded-full bg-surface-container-high flex items-center justify-center shrink-0";
                 document.getElementById("tumbler-icon").className = "material-symbols-outlined text-muted-gray";
                 document.getElementById("tumbler-badge").className = "mt-1 inline-flex items-center gap-xs px-2 py-1 bg-surface-container-high text-muted-gray rounded-full";
-                document.getElementById("tumbler-text").innerText = "Not Scanned";
+                document.getElementById("tumbler-text").innerText = "Belum Dipindai";
             }
 
             if (student.lunchboxScanned) {
@@ -365,13 +365,13 @@
                 document.getElementById("lunchbox-icon").className = "material-symbols-outlined text-eco-success";
                 document.getElementById("lunchbox-badge").className = "mt-1 inline-flex items-center gap-xs px-2 py-1 bg-eco-success/10 text-eco-success rounded-full";
                 document.getElementById("lunchbox-check-icon").innerText = "check_circle";
-                document.getElementById("lunchbox-text").innerText = "Verified Today";
+                document.getElementById("lunchbox-text").innerText = "Terverifikasi Hari Ini";
             } else {
                 document.getElementById("lunchbox-icon-bg").className = "w-12 h-12 rounded-full bg-surface-container-high flex items-center justify-center shrink-0";
                 document.getElementById("lunchbox-icon").className = "material-symbols-outlined text-muted-gray";
                 document.getElementById("lunchbox-badge").className = "mt-1 inline-flex items-center gap-xs px-2 py-1 bg-surface-container-high text-muted-gray rounded-full";
                 document.getElementById("lunchbox-check-icon").innerText = "pending";
-                document.getElementById("lunchbox-text").innerText = "Not Scanned";
+                document.getElementById("lunchbox-text").innerText = "Belum Dipindai";
             }
 
             // Load Class Ranking List (Mock Top 3)
@@ -392,7 +392,7 @@
                             <img class="w-full h-full object-cover" src="${stud.avatar}"/>
                         </div>
                         <div class="flex-1 min-w-0">
-                            <p class="font-label-sm text-label-sm text-primary font-bold truncate">You</p>
+                            <p class="font-label-sm text-label-sm text-primary font-bold truncate">Anda</p>
                         </div>
                         <div class="font-label-xs text-label-xs text-secondary font-bold">${stud.points.toLocaleString()}</div>
                     `;

@@ -146,34 +146,34 @@
             <!-- Active Item: Dashboard -->
             <a class="flex items-center gap-3 px-4 py-3 bg-secondary text-on-secondary rounded-lg font-bold mx-2 my-1 transition-transform duration-200 translate-x-1 shadow-sm" href="admin-dashboard.html">
                 <span class="material-symbols-outlined icon-fill">dashboard</span>
-                <span class="font-label-sm text-label-sm">Dashboard</span>
+                <span class="font-label-sm text-label-sm">Dasbor</span>
             </a>
             <a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-highest rounded-lg mx-2 my-1 transition-all" href="#">
                 <span class="material-symbols-outlined">analytics</span>
-                <span class="font-label-sm text-label-sm">Student Analytics</span>
+                <span class="font-label-sm text-label-sm">Analisis Siswa</span>
             </a>
             <a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-highest rounded-lg mx-2 my-1 transition-all" href="#">
                 <span class="material-symbols-outlined">bar_chart</span>
-                <span class="font-label-sm text-label-sm">Eco-Reports</span>
+                <span class="font-label-sm text-label-sm">Laporan Eco</span>
             </a>
             <a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-highest rounded-lg mx-2 my-1 transition-all" href="#">
                 <span class="material-symbols-outlined">shield</span>
-                <span class="font-label-sm text-label-sm">Officer Management</span>
+                <span class="font-label-sm text-label-sm">Manajemen Petugas</span>
             </a>
             <a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-highest rounded-lg mx-2 my-1 transition-all" href="#">
                 <span class="material-symbols-outlined">settings</span>
-                <span class="font-label-sm text-label-sm">User Settings</span>
+                <span class="font-label-sm text-label-sm">Pengaturan Pengguna</span>
             </a>
             <a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-highest rounded-lg mx-2 my-1 transition-all" href="#">
                 <span class="material-symbols-outlined">history</span>
-                <span class="font-label-sm text-label-sm">Audit Log</span>
+                <span class="font-label-sm text-label-sm">Log Audit</span>
             </a>
         </nav>
         <!-- Log Out at bottom of sidebar -->
         <div class="px-2 py-4 border-t border-outline-variant/20">
             <button onclick="logout()" class="w-full flex items-center gap-3 px-4 py-3 text-danger-red hover:bg-danger-red/10 rounded-lg transition-all text-left">
                 <span class="material-symbols-outlined">logout</span>
-                <span class="font-label-sm text-label-sm font-bold">Log Out</span>
+                <span class="font-label-sm text-label-sm font-bold">Keluar</span>
             </button>
         </div>
     </aside>
@@ -182,18 +182,18 @@
         <!-- Top App Bar -->
         <header class="sticky top-0 z-30 bg-surface/80 backdrop-blur-md border-b border-outline-variant/30 px-margin-desktop py-4 flex justify-between items-center">
             <div>
-                <h1 class="font-headline-lg text-headline-lg text-primary tracking-tight">Strategic Overview</h1>
-                <p class="font-body-md text-body-md text-muted-gray">Real-time ecosystem metrics and administrative controls.</p>
+                <h1 class="font-headline-lg text-headline-lg text-primary tracking-tight">Ikhtisar Strategis</h1>
+                <p class="font-body-md text-body-md text-muted-gray">Metrik ekosistem waktu nyata dan kontrol administratif.</p>
             </div>
             <div class="flex items-center gap-md">
                 <button onclick="logout()" class="md:hidden flex items-center gap-1 text-danger-red font-label-sm border border-danger-red/30 px-3 py-1 rounded-full bg-white/80 hover:bg-danger-red/10 transition-colors">
-                    Log out
+                    Keluar
                 </button>
                 <button class="w-10 h-10 rounded-full bg-surface-container-low flex items-center justify-center text-on-surface-variant hover:bg-surface-container transition-colors">
                     <span class="material-symbols-outlined">notifications</span>
                 </button>
-                <button onclick="alert('Eco report PDF generation triggered!')" class="px-6 py-2 bg-secondary text-on-secondary rounded-full font-label-sm text-label-sm hover:bg-on-secondary-fixed-variant transition-colors shadow-sm">
-                    Generate Report
+                <button onclick="alert('Pembuatan PDF laporan Eco dipicu!')" class="px-6 py-2 bg-secondary text-on-secondary rounded-full font-label-sm text-label-sm hover:bg-on-secondary-fixed-variant transition-colors shadow-sm">
+                    Buat Laporan
                 </button>
             </div>
         </header>
@@ -208,9 +208,9 @@
                         <span class="font-label-xs text-label-xs text-eco-success bg-eco-success/10 px-2 py-1 rounded-full">+12%</span>
                     </div>
                     <div class="relative z-10">
-                        <p class="font-label-sm text-label-sm text-muted-gray mb-1">Program Coverage</p>
+                        <p class="font-label-sm text-label-sm text-muted-gray mb-1">Cakupan Program</p>
                         <h3 class="font-headline-xl text-headline-xl text-primary">84%</h3>
-                        <p class="font-label-xs text-label-xs text-on-surface-variant mt-2">Across all districts</p>
+                        <p class="font-label-xs text-label-xs text-on-surface-variant mt-2">Di seluruh wilayah</p>
                     </div>
                 </div>
                 <!-- KPI 2 -->
@@ -221,9 +221,9 @@
                         <span class="font-label-xs text-label-xs text-eco-success bg-eco-success/10 px-2 py-1 rounded-full">+4.2</span>
                     </div>
                     <div class="relative z-10">
-                        <p class="font-label-sm text-label-sm text-muted-gray mb-1">Avg. Eco Score</p>
+                        <p class="font-label-sm text-label-sm text-muted-gray mb-1">Rata-rata Skor Eco</p>
                         <h3 id="avg-score" class="font-headline-xl text-headline-xl text-primary">792</h3>
-                        <p class="font-label-xs text-label-xs text-on-surface-variant mt-2">Top 15% globally</p>
+                        <p class="font-label-xs text-label-xs text-on-surface-variant mt-2">15% teratas secara regional</p>
                     </div>
                 </div>
                 <!-- KPI 3 -->
@@ -231,12 +231,12 @@
                     <div class="absolute top-0 right-0 w-24 h-24 bg-warning-amber/10 rounded-bl-full -mr-4 -mt-4 transition-transform group-hover:scale-110"></div>
                     <div class="flex justify-between items-start mb-4 relative z-10">
                         <span class="material-symbols-outlined text-warning-amber text-3xl">military_tech</span>
-                        <span id="active-jawaras-badge" class="font-label-xs text-label-xs text-warning-amber bg-warning-amber/10 px-2 py-1 rounded-full">Pending: 0</span>
+                        <span id="active-jawaras-badge" class="font-label-xs text-label-xs text-warning-amber bg-warning-amber/10 px-2 py-1 rounded-full">Tertunda: 0</span>
                     </div>
                     <div class="relative z-10">
-                        <p class="font-label-sm text-label-sm text-muted-gray mb-1">Active Jawaras</p>
+                        <p class="font-label-sm text-label-sm text-muted-gray mb-1">Jawara Aktif</p>
                         <h3 id="active-jawaras" class="font-headline-xl text-headline-xl text-primary">1,204</h3>
-                        <p class="font-label-xs text-label-xs text-on-surface-variant mt-2">Verified leaders</p>
+                        <p class="font-label-xs text-label-xs text-on-surface-variant mt-2">Pemimpin terverifikasi</p>
                     </div>
                 </div>
                 <!-- KPI 4 -->
@@ -244,12 +244,12 @@
                     <div class="absolute top-0 right-0 w-24 h-24 bg-violet-accent/10 rounded-bl-full -mr-4 -mt-4 transition-transform group-hover:scale-110"></div>
                     <div class="flex justify-between items-start mb-4 relative z-10">
                         <span class="material-symbols-outlined text-violet-accent text-3xl">redeem</span>
-                        <span class="font-label-xs text-label-xs text-primary-container bg-primary-container/10 px-2 py-1 rounded-full">Low</span>
+                        <span class="font-label-xs text-label-xs text-primary-container bg-primary-container/10 px-2 py-1 rounded-full">Rendah</span>
                     </div>
                     <div class="relative z-10">
-                        <p class="font-label-sm text-label-sm text-muted-gray mb-1">Reward Pool</p>
+                        <p class="font-label-sm text-label-sm text-muted-gray mb-1">Wadah Hadiah</p>
                         <h3 class="font-headline-xl text-headline-xl text-primary">14.5k</h3>
-                        <p class="font-label-xs text-label-xs text-on-surface-variant mt-2">Points remaining</p>
+                        <p class="font-label-xs text-label-xs text-on-surface-variant mt-2">Poin tersisa</p>
                     </div>
                 </div>
             </section>
@@ -259,8 +259,8 @@
                 <div class="bg-surface-container-lowest rounded-xl p-6 shadow-sm border border-outline-variant/20 flex flex-col">
                     <div class="flex justify-between items-center mb-6">
                         <div>
-                            <h3 class="font-headline-md text-headline-md text-primary">Eco Score Trends</h3>
-                            <p class="font-label-xs text-label-xs text-muted-gray">Trailing 30 Days</p>
+                            <h3 class="font-headline-md text-headline-md text-primary">Tren Skor Eco</h3>
+                            <p class="font-label-xs text-label-xs text-muted-gray">30 Hari Terakhir</p>
                         </div>
                         <button class="p-2 text-on-surface-variant hover:bg-surface-container rounded-full transition-colors">
                             <span class="material-symbols-outlined">more_vert</span>
@@ -283,12 +283,12 @@
                 <div class="bg-surface-container-lowest rounded-xl p-6 shadow-sm border border-outline-variant/20 flex flex-col">
                     <div class="flex justify-between items-center mb-6">
                         <div>
-                            <h3 class="font-headline-md text-headline-md text-primary">Regional Coverage</h3>
-                            <p class="font-label-xs text-label-xs text-muted-gray">By District Adoption Rate</p>
+                            <h3 class="font-headline-md text-headline-md text-primary">Cakupan Wilayah</h3>
+                            <p class="font-label-xs text-label-xs text-muted-gray">Berdasarkan Tingkat Adopsi Wilayah</p>
                         </div>
                         <div class="flex gap-2">
-                            <span class="px-3 py-1 bg-surface-container rounded-full font-label-xs text-label-xs text-on-surface-variant cursor-pointer hover:bg-surface-variant">List</span>
-                            <span class="px-3 py-1 bg-primary text-on-primary rounded-full font-label-xs text-label-xs shadow-sm cursor-pointer">Map</span>
+                            <span class="px-3 py-1 bg-surface-container rounded-full font-label-xs text-label-xs text-on-surface-variant cursor-pointer hover:bg-surface-variant">Daftar</span>
+                            <span class="px-3 py-1 bg-primary text-on-primary rounded-full font-label-xs text-label-xs shadow-sm cursor-pointer">Peta</span>
                         </div>
                     </div>
                     <!-- Map/Chart Placeholder -->
@@ -305,21 +305,21 @@
                     <div class="p-6 border-b border-outline-variant/20 bg-surface-bright">
                         <h3 class="font-headline-md text-headline-md text-primary flex items-center gap-2">
                             <span class="material-symbols-outlined text-violet-accent">account_balance</span>
-                            Reward Pool
+                            Wadah Hadiah
                         </h3>
-                        <p class="font-label-sm text-label-sm text-muted-gray mt-1">Manage global ecosystem points.</p>
+                        <p class="font-label-sm text-label-sm text-muted-gray mt-1">Kelola poin ekosistem global.</p>
                     </div>
                     <div class="p-6 flex-1 flex flex-col">
                         <div class="flex items-center justify-between mb-6 bg-surface-container-low p-4 rounded-lg border border-outline-variant/30">
                             <div>
-                                <p class="font-label-xs text-label-xs text-on-surface-variant uppercase tracking-wider">Current Balance</p>
-                                <p class="font-headline-lg text-headline-lg text-primary tracking-tight">14,500 <span class="text-body-md font-normal text-muted-gray">pts</span></p>
+                                <p class="font-label-xs text-label-xs text-on-surface-variant uppercase tracking-wider">Saldo Saat Ini</p>
+                                <p class="font-headline-lg text-headline-lg text-primary tracking-tight">14,500 <span class="text-body-md font-normal text-muted-gray">poin</span></p>
                             </div>
-                            <button onclick="alert('Feature to add reward pool points is under development')" class="px-4 py-2 border border-secondary text-secondary rounded-full font-label-sm text-label-sm hover:bg-secondary/5 transition-colors">
-                                Add Funds
+                            <button onclick="alert('Fitur untuk menambah poin wadah hadiah sedang dalam pengembangan')" class="px-4 py-2 border border-secondary text-secondary rounded-full font-label-sm text-label-sm hover:bg-secondary/5 transition-colors">
+                                Tambah Saldo
                             </button>
                         </div>
-                        <h4 class="font-label-sm text-label-sm text-primary mb-3">Recent Allocations</h4>
+                        <h4 class="font-label-sm text-label-sm text-primary mb-3">Alokasi Terbaru</h4>
                         <ul class="space-y-3 flex-1">
                             <li class="flex items-center justify-between p-3 hover:bg-surface-container-lowest rounded-lg transition-colors border border-transparent hover:border-outline-variant/20">
                                 <div class="flex items-center gap-3">
@@ -327,11 +327,11 @@
                                         <span class="material-symbols-outlined text-sm">arrow_upward</span>
                                     </div>
                                     <div>
-                                        <p class="font-label-sm text-label-sm text-on-surface">Tree Planting Drive</p>
-                                        <p class="font-label-xs text-label-xs text-muted-gray">District 4 • 2h ago</p>
+                                        <p class="font-label-sm text-label-sm text-on-surface">Gerakan Penanaman Pohon</p>
+                                        <p class="font-label-xs text-label-xs text-muted-gray">Wilayah 4 • 2 jam lalu</p>
                                     </div>
                                 </div>
-                                <span class="font-label-sm text-label-sm text-primary">-500 pts</span>
+                                <span class="font-label-sm text-label-sm text-primary">-500 poin</span>
                             </li>
                             <li class="flex items-center justify-between p-3 hover:bg-surface-container-lowest rounded-lg transition-colors border border-transparent hover:border-outline-variant/20">
                                 <div class="flex items-center gap-3">
@@ -339,11 +339,11 @@
                                         <span class="material-symbols-outlined text-sm">arrow_upward</span>
                                     </div>
                                     <div>
-                                        <p class="font-label-sm text-label-sm text-on-surface">Recycling Milestone</p>
-                                        <p class="font-label-xs text-label-xs text-muted-gray">Central High • 5h ago</p>
+                                        <p class="font-label-sm text-label-sm text-on-surface">Pencapaian Daur Ulang</p>
+                                        <p class="font-label-xs text-label-xs text-muted-gray">Pusat • 5 jam lalu</p>
                                     </div>
                                 </div>
-                                <span class="font-label-sm text-label-sm text-primary">-120 pts</span>
+                                <span class="font-label-sm text-label-sm text-primary">-120 poin</span>
                             </li>
                         </ul>
                     </div>
@@ -354,11 +354,11 @@
                         <div>
                             <h3 class="font-headline-md text-headline-md text-primary flex items-center gap-2">
                                 <span class="material-symbols-outlined text-warning-amber">verified_user</span>
-                                Jawara Validation
+                                Validasi Jawara
                             </h3>
-                            <p class="font-label-sm text-label-sm text-muted-gray mt-1">Pending leadership approvals.</p>
+                            <p class="font-label-sm text-label-sm text-muted-gray mt-1">Persetujuan kepemimpinan yang tertunda.</p>
                         </div>
-                        <span id="pending-count-badge" class="bg-warning-amber text-on-primary px-2 py-1 rounded-full font-label-xs text-label-xs">0 Pending</span>
+                        <span id="pending-count-badge" class="bg-warning-amber text-on-primary px-2 py-1 rounded-full font-label-xs text-label-xs">0 Tertunda</span>
                     </div>
                     <div class="flex-1 overflow-y-auto max-h-[400px]">
                         <ul id="validation-list" class="divide-y divide-outline-variant/10">
@@ -366,7 +366,7 @@
                         </ul>
                     </div>
                     <div class="p-3 border-t border-outline-variant/20 bg-surface-bright text-center">
-                        <button onclick="alert('Showing all validation requests history')" class="font-label-sm text-label-sm text-secondary hover:text-primary transition-colors">View All Pending</button>
+                        <button onclick="alert('Menampilkan semua riwayat permintaan validasi')" class="font-label-sm text-label-sm text-secondary hover:text-primary transition-colors">Lihat Semua yang Tertunda</button>
                     </div>
                 </div>
             </section>
@@ -395,10 +395,10 @@
             // Set profile picture
             document.getElementById("admin-avatar").src = user.avatar;
 
-            // Render stats
+             // Render stats
             const pendingList = state.validations.filter(v => v.status === "pending");
-            document.getElementById("pending-count-badge").innerText = `${pendingList.length + 11} Pending`;
-            document.getElementById("active-jawaras-badge").innerText = `Pending: ${pendingList.length + 11}`;
+            document.getElementById("pending-count-badge").innerText = `${pendingList.length + 11} Tertunda`;
+            document.getElementById("active-jawaras-badge").innerText = `Tertunda: ${pendingList.length + 11}`;
 
             // Calculate total points
             const totalScore = state.students.reduce((sum, s) => sum + s.points, 0);
@@ -409,8 +409,8 @@
             const list = document.getElementById("validation-list");
             list.innerHTML = "";
 
-            if (pendingList.length === 0) {
-                list.innerHTML = `<li class="p-6 text-center text-muted-gray">No pending validation requests.</li>`;
+             if (pendingList.length === 0) {
+                list.innerHTML = `<li class="p-6 text-center text-muted-gray">Tidak ada permintaan validasi tertunda.</li>`;
                 return;
             }
 
@@ -422,9 +422,9 @@
                             <div class="w-10 h-10 rounded-full overflow-hidden bg-surface-container border border-outline-variant/20 flex items-center justify-center">
                                 <img class="w-full h-full object-cover" src="${studentObj.avatar}"/>
                             </div>
-                            <div>
+                             <div>
                                 <p class="font-label-sm text-label-sm text-on-surface group-hover:text-secondary transition-colors">${v.studentName}</p>
-                                <p class="font-label-xs text-label-xs text-muted-gray">ID: ${v.studentId} • ${studentObj.points.toLocaleString()} Eco Score</p>
+                                <p class="font-label-xs text-label-xs text-muted-gray">ID: ${v.studentId} • Skor Eco ${studentObj.points.toLocaleString()}</p>
                             </div>
                         </div>
                         <div class="flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity">

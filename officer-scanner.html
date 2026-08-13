@@ -145,12 +145,12 @@
         <div class="flex justify-between items-center w-full px-margin-mobile py-4">
             <div class="flex items-center gap-sm">
                 <span class="material-symbols-outlined text-primary dark:text-inverse-primary" data-icon="eco">eco</span>
-                <h1 class="font-headline-md text-headline-md font-bold text-primary tracking-tight">School Ecosystem - Officer Scanner</h1>
+                <h1 class="font-headline-md text-headline-md font-bold text-primary tracking-tight">School Ecosystem - Pemindai Petugas</h1>
             </div>
             <!-- Log out button -->
             <div class="flex items-center gap-sm">
                 <button onclick="logout()" class="text-danger-red font-label-sm border border-danger-red/30 px-3 py-1 rounded-full bg-white/80 hover:bg-danger-red/10 transition-colors">
-                    Log out
+                    Keluar
                 </button>
                 <div class="w-10 h-10 rounded-full overflow-hidden border-2 border-surface-container-high">
                     <img id="officer-avatar" alt="Profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAeYFI6Z8p3RGBBsw9yKkCkx9qUHxKnXKY5xZ7AmYHen0fCOqC6xTXEpdaIs2N-qoNdrJQ3ZbuyFX6UMb0akhIk6QJwRxaETYROUxUAVMYsHXzkli7VO7E51g-FtIK2sMPrTK-ncV-xLA_FHDJY4ZdccyFQdAvSSFzCH_KdY0zWIceoIQMza-nopzrz6Z2ICcKhBSTaZm8G8SdwktNIrUAxl-qoJjNm56Jx0iRAUe92yPzCM_l6rRD_"/>
@@ -178,11 +178,11 @@
                 <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-eco-success opacity-75"></span>
                 <span class="relative inline-flex rounded-full h-3 w-3 bg-eco-success"></span>
             </span>
-            <span class="font-label-sm text-label-sm text-on-surface">System Active</span>
+            <span class="font-label-sm text-label-sm text-on-surface">Sistem Aktif</span>
         </div>
         <!-- Select student drop down to mock QR scanning different students -->
         <div class="bg-surface-container-lowest/90 backdrop-blur-md px-3 py-1.5 rounded-full shadow-md border border-outline-variant/30 flex items-center gap-2 mt-1">
-            <label class="font-label-xs text-label-xs text-muted-gray">Simulate QR Scan:</label>
+            <label class="font-label-xs text-label-xs text-muted-gray">Simulasikan Scan QR:</label>
             <select id="studentSelect" onchange="changeScannedStudent()" class="bg-transparent border-none py-0 pl-1 pr-6 font-label-xs text-label-xs text-primary focus:ring-0">
                 <!-- Loaded dynamically -->
             </select>
@@ -190,11 +190,11 @@
     </div>
 
     <!-- Verification UI Bottom Sheet -->
-    <div class="absolute bottom-0 left-0 right-0 z-20 bg-surface-container-lowest/95 backdrop-blur-xl rounded-t-[32px] border-t border-outline-variant/20 shadow-[0_-8px_32px_rgba(11,16,38,0.15)] transition-transform duration-300 transform translate-y-0 pb-safe">
+    <div class="fixed bottom-0 left-0 right-0 z-20 bg-surface-container-lowest/95 backdrop-blur-xl rounded-t-[32px] border-t border-outline-variant/20 shadow-[0_-8px_32px_rgba(11,16,38,0.15)] transition-transform duration-300 transform translate-y-0 pb-safe max-h-[65vh] overflow-y-auto">
         <div class="w-full flex justify-center pt-4 pb-2">
             <div class="w-12 h-1.5 bg-outline-variant/50 rounded-full"></div>
         </div>
-        <div class="px-margin-mobile pb-6 pt-2 space-y-6 max-w-md mx-auto">
+        <div class="px-margin-mobile pb-8 pt-2 space-y-4 max-w-md mx-auto">
             <!-- Student Context -->
             <div class="flex items-center gap-4 bg-surface-container-low p-3 rounded-2xl border border-surface-container-highest">
                 <div class="w-12 h-12 rounded-full overflow-hidden bg-primary-fixed shrink-0">
@@ -212,7 +212,7 @@
             </div>
             <!-- Rapid Verification Toggles -->
             <div class="space-y-3">
-                <p class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider pl-1">Verify Items</p>
+                <p class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider pl-1">Verifikasi Barang</p>
                 <div class="grid grid-cols-2 gap-3">
                     <!-- Toggle Button 1 -->
                     <button type="button" aria-pressed="false" id="toggle-tumbler" class="item-toggle group relative flex flex-col items-center justify-center p-4 rounded-xl border-2 border-surface-container-highest bg-surface hover:bg-surface-container-low transition-all duration-200" onclick="toggleItem(this, 'Tumbler')">
@@ -220,7 +220,7 @@
                             <span class="material-symbols-outlined text-[14px] opacity-0 text-on-secondary check-icon">check</span>
                         </div>
                         <span class="material-symbols-outlined text-3xl text-primary mb-2 group-aria-[pressed=true]:text-secondary transition-colors" data-icon="water_drop">water_drop</span>
-                        <span class="font-label-sm text-label-sm text-on-surface">Tumbler</span>
+                        <span class="font-label-sm text-label-sm text-on-surface">Botol Minum</span>
                     </button>
                     <!-- Toggle Button 2 -->
                     <button type="button" aria-pressed="false" id="toggle-lunchbox" class="item-toggle group relative flex flex-col items-center justify-center p-4 rounded-xl border-2 border-surface-container-highest bg-surface hover:bg-surface-container-low transition-all duration-200" onclick="toggleItem(this, 'Lunchbox')">
@@ -228,14 +228,14 @@
                             <span class="material-symbols-outlined text-[14px] opacity-0 text-on-secondary check-icon">check</span>
                         </div>
                         <span class="material-symbols-outlined text-3xl text-primary mb-2 group-aria-[pressed=true]:text-secondary transition-colors" data-icon="lunch_dining">lunch_dining</span>
-                        <span class="font-label-sm text-label-sm text-on-surface">Lunchbox</span>
+                        <span class="font-label-sm text-label-sm text-on-surface">Kotak Makan</span>
                     </button>
                 </div>
             </div>
             <!-- Action Button -->
             <button class="w-full bg-secondary hover:bg-secondary-container text-on-secondary font-headline-md text-[18px] font-bold py-4 rounded-full shadow-lg shadow-secondary/20 transition-all active:scale-95 flex items-center justify-center gap-2 mt-4" onclick="triggerSuccess()">
                 <span class="material-symbols-outlined">how_to_reg</span>
-                Log &amp; Continue
+                Simpan &amp; Lanjutkan
             </button>
         </div>
     </div>
@@ -246,11 +246,11 @@
             <div class="w-24 h-24 bg-eco-success rounded-full flex items-center justify-center shadow-lg shadow-eco-success/30 mb-6">
                 <span class="material-symbols-outlined text-5xl text-on-primary filled-icon" style="font-variation-settings: 'FILL' 1;">check_circle</span>
             </div>
-            <h2 class="font-headline-xl text-headline-xl text-on-surface mb-2">Verified</h2>
-            <p class="font-body-lg text-body-lg text-on-surface-variant" id="success-message">Points logged for Alex Rivera</p>
+            <h2 class="font-headline-xl text-headline-xl text-on-surface mb-2">Terverifikasi</h2>
+            <p class="font-body-lg text-body-lg text-on-surface-variant" id="success-message">Poin tercatat untuk Alex Rivera</p>
             <div class="mt-8 font-label-sm text-label-sm text-muted-gray flex items-center gap-2 animate-pulse">
                 <span class="material-symbols-outlined text-[16px]">qr_code_scanner</span>
-                Ready for next student...
+                Siap untuk siswa berikutnya...
             </div>
         </div>
     </div>
@@ -303,7 +303,7 @@
 
         function triggerSuccess() {
             if (selectedItems.length === 0) {
-                alert("Please select at least one item (Tumbler or Lunchbox) to log!");
+                alert("Silakan pilih minimal satu barang (Botol Minum atau Kotak Makan)!");
                 return;
             }
 
@@ -323,7 +323,7 @@
                 pointsEarned: pointsEarned,
                 items: [...selectedItems],
                 status: "pending",
-                time: "Just now"
+                time: "Baru saja"
             };
 
             state.validations.unshift(newValidation);
@@ -333,7 +333,7 @@
             const overlay = document.getElementById('successOverlay');
             const content = document.getElementById('successContent');
             
-            document.getElementById("success-message").innerText = `${pointsEarned} pts logged for ${activeStudent.name}`;
+            document.getElementById("success-message").innerText = `${pointsEarned} poin tercatat untuk ${activeStudent.name}`;
 
             overlay.classList.add('active');
             content.classList.remove('scale-90');
