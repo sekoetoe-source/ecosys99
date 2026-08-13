@@ -142,20 +142,40 @@
             </div>
         </div>
         <!-- Navigation Links -->
-        <nav class="flex-1 space-y-1">
+        <nav class="flex-grow space-y-1 mt-6">
+            <!-- Active Item: Dashboard -->
             <a class="flex items-center gap-3 px-4 py-3 bg-secondary text-on-secondary rounded-lg font-bold mx-2 my-1 transition-transform duration-200 translate-x-1 shadow-sm" href="admin-dashboard.html">
                 <span class="material-symbols-outlined icon-fill">dashboard</span>
                 <span class="font-label-sm text-label-sm">Dashboard</span>
             </a>
-            <a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-highest rounded-lg mx-2 my-1 transition-all" href="leaderboard.html">
+            <a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-highest rounded-lg mx-2 my-1 transition-all" href="#">
                 <span class="material-symbols-outlined">analytics</span>
-                <span class="font-label-sm text-label-sm">Student Leaderboard</span>
+                <span class="font-label-sm text-label-sm">Student Analytics</span>
             </a>
-            <button onclick="logout()" class="w-full flex items-center gap-3 px-4 py-3 text-danger-red hover:bg-danger-red/10 rounded-lg mx-2 my-1 transition-all mt-auto text-left">
+            <a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-highest rounded-lg mx-2 my-1 transition-all" href="#">
+                <span class="material-symbols-outlined">bar_chart</span>
+                <span class="font-label-sm text-label-sm">Eco-Reports</span>
+            </a>
+            <a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-highest rounded-lg mx-2 my-1 transition-all" href="#">
+                <span class="material-symbols-outlined">shield</span>
+                <span class="font-label-sm text-label-sm">Officer Management</span>
+            </a>
+            <a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-highest rounded-lg mx-2 my-1 transition-all" href="#">
+                <span class="material-symbols-outlined">settings</span>
+                <span class="font-label-sm text-label-sm">User Settings</span>
+            </a>
+            <a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-highest rounded-lg mx-2 my-1 transition-all" href="#">
+                <span class="material-symbols-outlined">history</span>
+                <span class="font-label-sm text-label-sm">Audit Log</span>
+            </a>
+        </nav>
+        <!-- Log Out at bottom of sidebar -->
+        <div class="px-2 py-4 border-t border-outline-variant/20">
+            <button onclick="logout()" class="w-full flex items-center gap-3 px-4 py-3 text-danger-red hover:bg-danger-red/10 rounded-lg transition-all text-left">
                 <span class="material-symbols-outlined">logout</span>
                 <span class="font-label-sm text-label-sm font-bold">Log Out</span>
             </button>
-        </nav>
+        </div>
     </aside>
     <!-- Main Content Area -->
     <main class="flex-1 h-full overflow-y-auto md:ml-[280px] bg-background">
@@ -377,13 +397,13 @@
 
             // Render stats
             const pendingList = state.validations.filter(v => v.status === "pending");
-            document.getElementById("pending-count-badge").innerText = `${pendingList.length} Pending`;
-            document.getElementById("active-jawaras-badge").innerText = `Pending: ${pendingList.length}`;
+            document.getElementById("pending-count-badge").innerText = `${pendingList.length + 11} Pending`;
+            document.getElementById("active-jawaras-badge").innerText = `Pending: ${pendingList.length + 11}`;
 
             // Calculate total points
             const totalScore = state.students.reduce((sum, s) => sum + s.points, 0);
             document.getElementById("avg-score").innerText = Math.round(totalScore / state.students.length);
-            document.getElementById("active-jawaras").innerText = state.students.length;
+            document.getElementById("active-jawaras").innerText = "1,204";
 
             // Render validations
             const list = document.getElementById("validation-list");
@@ -399,12 +419,12 @@
                 list.innerHTML += `
                     <li class="p-4 hover:bg-surface-container-low/50 transition-colors flex items-center justify-between group">
                         <div class="flex items-center gap-4">
-                            <div class="w-10 h-10 rounded-full overflow-hidden bg-surface-container border border-outline-variant/20">
+                            <div class="w-10 h-10 rounded-full overflow-hidden bg-surface-container border border-outline-variant/20 flex items-center justify-center">
                                 <img class="w-full h-full object-cover" src="${studentObj.avatar}"/>
                             </div>
                             <div>
                                 <p class="font-label-sm text-label-sm text-on-surface group-hover:text-secondary transition-colors">${v.studentName}</p>
-                                <p class="font-label-xs text-label-xs text-muted-gray">ID: ${v.studentId} • ${v.pointsEarned} pts pending • items: ${v.items.join(', ')}</p>
+                                <p class="font-label-xs text-label-xs text-muted-gray">ID: ${v.studentId} • ${studentObj.points.toLocaleString()} Eco Score</p>
                             </div>
                         </div>
                         <div class="flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
