@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html class="light" lang="id">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Laporan Eco - Admin Central</title>
+    <link href="dist/output.css" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=Plus+Jakarta+Sans:wght@400;600;700;900&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .icon-fill {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        
+        /* Print Styles */
+        @media print {
+            body {
+                background: white !important;
+                color: black !important;
+                height: auto !important;
+                overflow: visible !important;
+            }
+            aside, header, .no-print {
+                display: none !important;
+            }
+            main {
+                margin-left: 0 !important;
+                padding: 0 !important;
+                height: auto !important;
+                overflow: visible !important;
+            }
+            .print-page {
+                box-shadow: none !important;
+                border: none !important;
+                padding: 0 !important;
+                margin: 0 !important;
+                max-width: 100% !important;
+                width: 100% !important;
+            }
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md text-body-md antialiased flex h-dvh overflow-hidden">
+    <!-- NavigationDrawer -->
+    <aside class="fixed left-0 top-0 h-full w-[280px] bg-surface-container-low border-r border-outline-variant flex flex-col py-lg px-md z-40 hidden md:flex no-print">
+        <!-- Header / Profile -->
+        <div class="flex flex-col gap-5 mb-6 px-2 mt-4">
+            <div class="flex items-center gap-2">
+                <span class="material-symbols-outlined text-secondary text-3xl font-bold" style="font-variation-settings: 'FILL' 1;">eco</span>
+                <span class="font-headline-md text-headline-md font-black text-secondary tracking-tight">EcoSaaS</span>
+            </div>
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-full bg-secondary-container text-secondary flex items-center justify-center font-bold text-sm shrink-0 border border-secondary/20">
+                    AA
+                </div>
+                <div>
+                    <h3 class="font-label-sm text-label-sm font-bold text-primary leading-tight">Admin Central</h3>
+                    <p class="font-label-xs text-label-xs text-muted-gray">Sustainability Office</p>
+                </div>
+            </div>
+        </div>
+        <!-- Navigation Links -->
+        <nav class="flex-grow space-y-1 mt-6">
+            <a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-highest rounded-lg mx-2 my-1 transition-all" href="admin-dashboard.html">
+                <span class="material-symbols-outlined">dashboard</span>
+                <span class="font-label-sm text-label-sm">Dasbor</span>
+            </a>
+            <a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-highest rounded-lg mx-2 my-1 transition-all" href="#">
+                <span class="material-symbols-outlined">analytics</span>
+                <span class="font-label-sm text-label-sm">Analisis Siswa</span>
+            </a>
+            <!-- Active Item: Laporan Eco -->
+            <a class="flex items-center gap-3 px-4 py-3 bg-secondary text-on-secondary rounded-lg font-bold mx-2 my-1 transition-transform duration-200 translate-x-1 shadow-sm" href="admin-reports.html">
+                <span class="material-symbols-outlined icon-fill">bar_chart</span>
+                <span class="font-label-sm text-label-sm">Laporan Eco</span>
+            </a>
+            <a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-highest rounded-lg mx-2 my-1 transition-all" href="#">
+                <span class="material-symbols-outlined">shield</span>
+                <span class="font-label-sm text-label-sm">Manajemen Petugas</span>
+            </a>
+            <a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-highest rounded-lg mx-2 my-1 transition-all" href="#">
+                <span class="material-symbols-outlined">settings</span>
+                <span class="font-label-sm text-label-sm">Pengaturan Pengguna</span>
+            </a>
+            <a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-highest rounded-lg mx-2 my-1 transition-all" href="#">
+                <span class="material-symbols-outlined">history</span>
+                <span class="font-label-sm text-label-sm">Log Audit</span>
+            </a>
+        </nav>
+        <!-- Log Out at bottom of sidebar -->
+        <div class="mt-auto px-2">
+            <button onclick="logout()" class="w-full flex items-center gap-3 px-4 py-3 text-error hover:bg-error/10 rounded-lg transition-colors">
+                <span class="material-symbols-outlined">logout</span>
+                <span class="font-label-sm text-label-sm font-bold">Keluar</span>
+            </button>
+        </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="flex-grow md:ml-[280px] h-full overflow-y-auto bg-surface-container-low pt-6 pb-12 px-4 md:px-10">
+        <!-- Top Toolbar with Actions (Hidden in Print) -->
+        <header class="flex justify-between items-center max-w-4xl mx-auto mb-6 no-print">
+            <div class="flex items-center gap-md">
+                <button onclick="window.history.back()" class="md:hidden p-2 hover:bg-surface-container-high rounded-full transition-colors">
+                    <span class="material-symbols-outlined">arrow_back</span>
+                </button>
+                <div>
+                    <h1 class="font-headline-lg-mobile md:font-headline-lg text-primary">Eco-Reports</h1>
+                    <p class="font-label-sm text-label-sm text-muted-gray">Sistem Pelaporan Hijau & Ekspor PDF Resmi</p>
+                </div>
+            </div>
+            <button onclick="window.print()" class="flex items-center gap-2 px-5 py-2.5 bg-secondary text-on-secondary font-bold font-label-sm text-label-sm rounded-full shadow-md hover:bg-secondary-container hover:scale-102 transition-all">
+                <span class="material-symbols-outlined text-[18px]">print</span>
+                Print / Export PDF
+            </button>
+        </header>
+
+        <!-- Printable Report Sheet Card -->
+        <div class="print-page max-w-4xl mx-auto bg-white rounded-2xl shadow-xl p-8 border border-outline-variant/20 relative my-6 print:shadow-none print:border-none print:p-0 print:my-0">
+            
+            <!-- School Header -->
+            <div class="flex items-center justify-between pb-6 border-b border-primary/20 mb-8">
+                <!-- Logo -->
+                <div class="w-20 h-20 shrink-0">
+                    <img class="w-full h-full object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDGu0ObCJWft4PpmGRHyqQaS1wc0An5soWABF1BiIEnysOHCOTykZ2yIn4J-QjSaqpia08BvMEHtoIm9rvwhyrQQG3sLI8nhGbVWDRiIX2j21TDiiGENlwZUOKJg2jS8ovefOt0_u27IYDsmjYFviaGJrZWTtlbSpdm3rBVdjkrr7wceWZpUJHVIL9zLzw5A8SQfSOEW2-wDO4Ft2-PUZatfnGlWQiqkelpc3605IN7EoWFqQGrnGe5" alt="Logo SMP Negeri 99 Jakarta"/>
+                </div>
+                <!-- Details -->
+                <div class="flex-grow text-center px-4">
+                    <h2 class="font-headline-md text-headline-md font-black tracking-wide text-primary">SMP NEGERI 99 JAKARTA</h2>
+                    <p class="font-label-sm text-label-sm text-on-surface-variant font-bold">Jl. Pendidikan No. 1, Jakarta Selatan, 12345</p>
+                    <p class="font-label-xs text-label-xs text-muted-gray mt-0.5">Telp: (021) 555-0199 | Email: info@smpn99jkt.sch.id</p>
+                </div>
+                <!-- Empty spacer to balance logo -->
+                <div class="w-20"></div>
+            </div>
+
+            <!-- Title Section -->
+            <div class="text-center mb-8">
+                <h3 class="font-headline-lg-mobile md:font-headline-lg text-primary tracking-tight font-black uppercase">Laporan Bulanan Program Lingkungan</h3>
+                <p class="font-label-sm text-label-sm text-muted-gray italic font-bold">Monthly Environmental Program Report</p>
+                <div class="inline-block bg-secondary/10 text-secondary font-bold font-label-xs text-label-xs px-3 py-1 rounded-full mt-2 print:border print:border-secondary/20">
+                    Periode / Period: October 2024
+                </div>
+            </div>
+
+            <!-- Stats Metric Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                <!-- Tumbler Stats -->
+                <div class="rounded-xl border border-outline-variant/30 p-5 flex flex-col items-center justify-center text-center bg-surface-container-low/20">
+                    <span class="material-symbols-outlined text-secondary text-2xl mb-2">local_drink</span>
+                    <h4 class="text-[36px] font-black text-primary leading-none">84%</h4>
+                    <p class="font-label-xs text-label-xs font-bold text-dark-navy-text mt-1">Total Tumbler Usage</p>
+                    <p class="font-label-xs text-label-xs text-muted-gray">Penggunaan Tumbler</p>
+                </div>
+                <!-- Lunchbox Stats -->
+                <div class="rounded-xl border border-outline-variant/30 p-5 flex flex-col items-center justify-center text-center bg-surface-container-low/20">
+                    <span class="material-symbols-outlined text-eco-success text-2xl mb-2">restaurant</span>
+                    <h4 class="text-[36px] font-black text-primary leading-none">76%</h4>
+                    <p class="font-label-xs text-label-xs font-bold text-dark-navy-text mt-1">Total Lunchbox Usage</p>
+                    <p class="font-label-xs text-label-xs text-muted-gray">Penggunaan Kotak Makan</p>
+                </div>
+                <!-- Top Class Stats -->
+                <div class="rounded-xl border border-violet-accent/30 p-5 flex flex-col items-center justify-center text-center bg-violet-accent/5">
+                    <span class="material-symbols-outlined text-violet-accent text-2xl mb-2" style="font-variation-settings: 'FILL' 1;">military_tech</span>
+                    <h4 class="text-[32px] font-black text-violet-accent leading-none">Kelas 9A</h4>
+                    <p class="font-label-xs text-label-xs font-bold text-dark-navy-text mt-1">Top Performing Class</p>
+                    <p class="font-label-xs text-label-xs text-muted-gray">Kelas Terbaik</p>
+                </div>
+            </div>
+
+            <!-- Trends Section -->
+            <div class="mb-8">
+                <h4 class="font-headline-md text-headline-md text-primary mb-4 font-bold border-b border-outline-variant/20 pb-2">Tren Partisipasi / Participation Trends</h4>
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                    <!-- Custom High-Fidelity SVG Chart -->
+                    <div class="lg:col-span-2 border border-outline-variant/30 rounded-xl p-4 flex flex-col bg-white">
+                        <p class="font-label-sm text-label-sm font-bold text-primary mb-3">Weekly Trend (Tumbler vs Lunchbox)</p>
+                        <div class="flex-grow flex items-center justify-center h-48 w-full">
+                            <svg class="w-full h-full" viewBox="0 0 500 200" preserveAspectRatio="none">
+                                <!-- Grid Lines -->
+                                <line x1="40" y1="20" x2="480" y2="20" stroke="#f1f4f8" stroke-width="1" />
+                                <line x1="40" y1="60" x2="480" y2="60" stroke="#f1f4f8" stroke-width="1" />
+                                <line x1="40" y1="100" x2="480" y2="100" stroke="#f1f4f8" stroke-width="1" />
+                                <line x1="40" y1="140" x2="480" y2="140" stroke="#f1f4f8" stroke-width="1" />
+                                <line x1="40" y1="170" x2="480" y2="170" stroke="#77767e" stroke-width="1.5" />
+                                
+                                <!-- Y Axis Labels -->
+                                <text x="15" y="24" class="text-[9px] fill-muted-gray font-bold">100%</text>
+                                <text x="15" y="64" class="text-[9px] fill-muted-gray font-bold">75%</text>
+                                <text x="15" y="104" class="text-[9px] fill-muted-gray font-bold">50%</text>
+                                <text x="15" y="144" class="text-[9px] fill-muted-gray font-bold">25%</text>
+                                
+                                <!-- X Axis Labels -->
+                                <text x="100" y="188" class="text-[9px] fill-muted-gray font-bold" text-anchor="middle">Minggu 1</text>
+                                <text x="200" y="188" class="text-[9px] fill-muted-gray font-bold" text-anchor="middle">Minggu 2</text>
+                                <text x="300" y="188" class="text-[9px] fill-muted-gray font-bold" text-anchor="middle">Minggu 3</text>
+                                <text x="400" y="188" class="text-[9px] fill-muted-gray font-bold" text-anchor="middle">Minggu 4</text>
+                                
+                                <!-- Bars Week 1 -->
+                                <rect x="80" y="50" width="16" height="120" rx="2" fill="#0057c2" />
+                                <rect x="100" y="70" width="16" height="100" rx="2" fill="#16865B" />
+                                
+                                <!-- Bars Week 2 -->
+                                <rect x="180" y="40" width="16" height="130" rx="2" fill="#0057c2" />
+                                <rect x="200" y="60" width="16" height="110" rx="2" fill="#16865B" />
+                                
+                                <!-- Bars Week 3 -->
+                                <rect x="280" y="30" width="16" height="140" rx="2" fill="#0057c2" />
+                                <rect x="300" y="50" width="16" height="120" rx="2" fill="#16865B" />
+                                
+                                <!-- Bars Week 4 -->
+                                <rect x="380" y="25" width="16" height="145" rx="2" fill="#0057c2" />
+                                <rect x="400" y="45" width="16" height="125" rx="2" fill="#16865B" />
+                            </svg>
+                        </div>
+                        <!-- Legend -->
+                        <div class="flex justify-center gap-4 mt-2">
+                            <div class="flex items-center gap-1">
+                                <span class="w-3 h-3 bg-secondary rounded-sm"></span>
+                                <span class="text-[10px] font-bold text-muted-gray">Tumbler</span>
+                            </div>
+                            <div class="flex items-center gap-1">
+                                <span class="w-3 h-3 bg-eco-success rounded-sm"></span>
+                                <span class="text-[10px] font-bold text-muted-gray">Lunchbox</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Growth Cards -->
+                    <div class="border border-outline-variant/30 rounded-xl p-6 flex flex-col items-center justify-center text-center bg-surface-container-low/10">
+                        <div class="w-12 h-12 bg-eco-success/10 rounded-full flex items-center justify-center text-eco-success mb-3">
+                            <span class="material-symbols-outlined text-2xl font-bold">trending_up</span>
+                        </div>
+                        <h4 class="text-[40px] font-black text-eco-success leading-none">+12%</h4>
+                        <p class="font-label-sm text-label-sm font-bold text-dark-navy-text mt-2">Growth from last month</p>
+                        <p class="font-label-xs text-label-xs text-muted-gray">Pertumbuhan partisipasi program</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Champion Rankings Section -->
+            <div class="mb-12">
+                <h4 class="font-headline-md text-headline-md text-primary mb-4 font-bold border-b border-outline-variant/20 pb-2">Peringkat Jawara Lingkungan / Environmental Champion Rankings</h4>
+                <div class="overflow-x-auto border border-outline-variant/20 rounded-xl">
+                    <table class="w-full text-left border-collapse">
+                        <thead>
+                            <tr class="bg-surface-container-high/60 border-b border-outline-variant/20">
+                                <th class="p-3 font-label-sm text-label-sm text-primary uppercase text-center w-16">Rank</th>
+                                <th class="p-3 font-label-sm text-label-sm text-primary uppercase">Class</th>
+                                <th class="p-3 font-label-sm text-label-sm text-primary uppercase text-right">Points</th>
+                                <th class="p-3 font-label-sm text-label-sm text-primary uppercase text-right">Tumbler Rate</th>
+                                <th class="p-3 font-label-sm text-label-sm text-primary uppercase text-right">Lunchbox Rate</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-outline-variant/10">
+                            <tr>
+                                <td class="p-3 text-center font-bold text-secondary">1</td>
+                                <td class="p-3 font-bold text-primary">9A</td>
+                                <td class="p-3 text-right font-bold text-dark-navy-text">12,450</td>
+                                <td class="p-3 text-right font-bold text-eco-success">98%</td>
+                                <td class="p-3 text-right font-bold text-eco-success">92%</td>
+                            </tr>
+                            <tr class="bg-surface-container-low/20">
+                                <td class="p-3 text-center font-bold text-primary">2</td>
+                                <td class="p-3 font-bold text-primary">8C</td>
+                                <td class="p-3 text-right font-bold text-dark-navy-text">11,200</td>
+                                <td class="p-3 text-right font-bold text-eco-success">95%</td>
+                                <td class="p-3 text-right font-bold text-eco-success">88%</td>
+                            </tr>
+                            <tr>
+                                <td class="p-3 text-center font-bold text-primary">3</td>
+                                <td class="p-3 font-bold text-primary">7B</td>
+                                <td class="p-3 text-right font-bold text-dark-navy-text">10,850</td>
+                                <td class="p-3 text-right font-bold text-eco-success">90%</td>
+                                <td class="p-3 text-right font-bold text-eco-success">85%</td>
+                            </tr>
+                            <tr class="bg-surface-container-low/20">
+                                <td class="p-3 text-center font-bold text-primary">4</td>
+                                <td class="p-3 font-bold text-primary">9C</td>
+                                <td class="p-3 text-right font-bold text-dark-navy-text">9,500</td>
+                                <td class="p-3 text-right font-bold text-eco-success">82%</td>
+                                <td class="p-3 text-right font-bold text-eco-success">75%</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Signatures Section -->
+            <div class="grid grid-cols-2 gap-8 text-center pt-8 border-t border-outline-variant/30">
+                <div class="flex flex-col items-center justify-between min-h-[140px]">
+                    <div>
+                        <p class="font-label-xs text-label-xs text-muted-gray italic">Mengetahui / Acknowledged by,</p>
+                        <p class="font-label-sm text-label-sm font-bold text-primary">Kepala Sekolah / Principal</p>
+                    </div>
+                    <div class="mt-12">
+                        <p class="font-label-sm text-label-sm font-bold text-primary underline">Dr. Budi Santoso, M.Pd.</p>
+                        <p class="font-label-xs text-label-xs text-muted-gray">NIP. 19700101 199512 1 001</p>
+                    </div>
+                </div>
+                <div class="flex flex-col items-center justify-between min-h-[140px]">
+                    <div>
+                        <p class="font-label-xs text-label-xs text-muted-gray italic">Jakarta, 31 October 2024</p>
+                        <p class="font-label-sm text-label-sm font-bold text-primary">Koordinator Program / Program Coordinator</p>
+                    </div>
+                    <div class="mt-12">
+                        <p class="font-label-sm text-label-sm font-bold text-primary underline">Siti Aminah, S.Pd.</p>
+                        <p class="font-label-xs text-label-xs text-muted-gray">NIP. 19850515 201001 2 003</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="shared.js"></script>
+    <script>
+        checkAuth(['admin']);
+        
+        document.addEventListener("DOMContentLoaded", () => {
+            const user = getLoggedInUser();
+            if (user) {
+                document.getElementById("admin-avatar").src = user.avatar;
+            }
+        });
+    </script>
+</body>
+</html>

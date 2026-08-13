@@ -4,111 +4,9 @@
     <meta charset="utf-8"/>
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <title>Admin Strategic Dashboard - School Ecosystem</title>
+    <link href="dist/output.css" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=Plus+Jakarta+Sans:wght@400;600;700;900&amp;display=swap" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-    <script id="tailwind-config">
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    "colors": {
-                        "background": "#f7fafe",
-                        "outline": "#77767e",
-                        "secondary-fixed": "#d9e2ff",
-                        "on-primary-fixed": "#151a31",
-                        "on-tertiary-container": "#7073ff",
-                        "surface-container-lowest": "#ffffff",
-                        "tertiary-container": "#07006c",
-                        "error-container": "#ffdad6",
-                        "on-error": "#ffffff",
-                        "tertiary-fixed": "#e1e0ff",
-                        "on-tertiary-fixed": "#07006c",
-                        "secondary": "#0057c2",
-                        "error": "#ba1a1a",
-                        "on-secondary-fixed-variant": "#004398",
-                        "eco-success": "#16865B",
-                        "tertiary-fixed-dim": "#c0c1ff",
-                        "on-primary-fixed-variant": "#41455e",
-                        "on-surface-variant": "#46464d",
-                        "on-surface": "#181c1f",
-                        "warning-amber": "#F59E0B",
-                        "surface-container-low": "#f1f4f8",
-                        "primary": "#000000",
-                        "on-background": "#181c1f",
-                        "on-primary-container": "#7e829e",
-                        "danger-red": "#EF4444",
-                        "primary-fixed": "#dde1ff",
-                        "inverse-on-surface": "#eef1f5",
-                        "surface-variant": "#e0e3e7",
-                        "surface": "#f7fafe",
-                        "on-primary": "#ffffff",
-                        "tertiary": "#000000",
-                        "primary-fixed-dim": "#c1c5e3",
-                        "surface-bright": "#f7fafe",
-                        "violet-accent": "#8B5CF6",
-                        "inverse-primary": "#c1c5e3",
-                        "on-error-container": "#93000a",
-                        "secondary-fixed-dim": "#afc6ff",
-                        "inverse-surface": "#2d3134",
-                        "on-tertiary-fixed-variant": "#2f2ebe",
-                        "outline-variant": "#c7c5ce",
-                        "primary-container": "#151a31",
-                        "on-secondary-container": "#fefcff",
-                        "dark-navy-text": "#111827",
-                        "surface-tint": "#585d77",
-                        "on-secondary": "#ffffff",
-                        "surface-container-highest": "#e0e3e7",
-                        "surface-container": "#ebeef2",
-                        "surface-container-high": "#e5e8ec",
-                        "muted-gray": "#667085",
-                        "on-tertiary": "#ffffff",
-                        "surface-dim": "#d7dade",
-                        "on-secondary-fixed": "#001a43",
-                        "cool-white": "#F9FAFF",
-                        "secondary-container": "#246fe7"
-                    },
-                    "borderRadius": {
-                        "DEFAULT": "0.25rem",
-                        "lg": "0.5rem",
-                        "xl": "0.75rem",
-                        "full": "9999px"
-                    },
-                    "spacing": {
-                        "xl": "40px",
-                        "xs": "4px",
-                        "md": "16px",
-                        "sm": "8px",
-                        "margin-desktop": "32px",
-                        "unit": "4px",
-                        "gutter": "16px",
-                        "lg": "24px",
-                        "margin-mobile": "16px"
-                    },
-                    "fontFamily": {
-                        "label-xs": ["Inter"],
-                        "headline-md": ["Plus Jakarta Sans"],
-                        "body-lg": ["Plus Jakarta Sans"],
-                        "headline-lg-mobile": ["Plus Jakarta Sans"],
-                        "label-sm": ["Inter"],
-                        "headline-xl": ["Plus Jakarta Sans"],
-                        "body-md": ["Plus Jakarta Sans"],
-                        "headline-lg": ["Plus Jakarta Sans"]
-                    },
-                    "fontSize": {
-                        "label-xs": ["12px", { "lineHeight": "16px", "fontWeight": "700" }],
-                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
-                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
-                        "headline-lg-mobile": ["24px", { "lineHeight": "32px", "fontWeight": "700" }],
-                        "label-sm": ["14px", { "lineHeight": "20px", "letterSpacing": "0.02em", "fontWeight": "600" }],
-                        "headline-xl": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
-                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
-                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700" }]
-                    }
-                }
-            }
-        }
-    </script>
     <style>
         .material-symbols-outlined {
             font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
@@ -127,18 +25,23 @@
         }
     </style>
 </head>
-<body class="bg-background text-on-background font-body-md text-body-md antialiased flex h-screen overflow-hidden">
+<body class="bg-background text-on-background font-body-md text-body-md antialiased flex h-dvh overflow-hidden">
     <!-- NavigationDrawer -->
     <aside class="fixed left-0 top-0 h-full w-[280px] bg-surface-container-low border-r border-outline-variant flex flex-col py-lg px-md z-40 hidden md:flex">
         <!-- Header / Profile -->
-        <div class="flex items-center gap-md mb-xl px-2">
-            <div class="w-12 h-12 rounded-full overflow-hidden border-2 border-secondary flex-shrink-0">
-                <img id="admin-avatar" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDdmATtD99xlSOAYq5OnBTqRHjT6U7S_mG8HxmMkkWjFHq3HZVbCAxb-OCdVxnV6cWV2Ugq8mbYQRE9KhThgqCukiR-KKIFxU4M6FWD8UaIrgMyaW6D5HGOGK-cX9NZuAh4kFB_lc2ykeG9HqLYIKIUaDZvy3Iu8pwdliCS2fvu6YUdldXKj60eE6K_nOVbV9c0tpaawLdSLsFDz8es7jGHIWOUXaUF9X1w6tUw8PW5cXo3NkZruHCt"/>
+        <div class="flex flex-col gap-5 mb-6 px-2 mt-4">
+            <div class="flex items-center gap-2">
+                <span class="material-symbols-outlined text-secondary text-3xl font-bold" style="font-variation-settings: 'FILL' 1;">eco</span>
+                <span class="font-headline-md text-headline-md font-black text-secondary tracking-tight">EcoSaaS</span>
             </div>
-            <div>
-                <h2 class="font-headline-md text-headline-md font-black text-secondary tracking-tight">Admin Central</h2>
-                <p class="font-label-xs text-label-xs text-on-surface-variant">Sustainability Office</p>
-                <span class="font-label-xs text-label-xs text-muted-gray mt-1 block">v2.1.0</span>
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-full bg-secondary-container text-secondary flex items-center justify-center font-bold text-sm shrink-0 border border-secondary/20">
+                    AA
+                </div>
+                <div>
+                    <h3 class="font-label-sm text-label-sm font-bold text-primary leading-tight">Admin Central</h3>
+                    <p class="font-label-xs text-label-xs text-muted-gray">Sustainability Office</p>
+                </div>
             </div>
         </div>
         <!-- Navigation Links -->
@@ -152,7 +55,7 @@
                 <span class="material-symbols-outlined">analytics</span>
                 <span class="font-label-sm text-label-sm">Analisis Siswa</span>
             </a>
-            <a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-highest rounded-lg mx-2 my-1 transition-all" href="#">
+            <a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-highest rounded-lg mx-2 my-1 transition-all" href="admin-reports.html">
                 <span class="material-symbols-outlined">bar_chart</span>
                 <span class="font-label-sm text-label-sm">Laporan Eco</span>
             </a>
@@ -384,6 +287,7 @@
             </footer>
         </div>
     </main>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="shared.js"></script>
     <script>
         checkAuth(['admin']);

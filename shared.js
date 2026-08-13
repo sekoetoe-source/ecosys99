@@ -20,6 +20,52 @@ const DEFAULT_STATE = {
     loggedInUser: null
 };
 
+// Global Supabase Integration Configuration
+const SUPABASE_URL = window.SUPABASE_URL || "";
+const SUPABASE_ANON_KEY = window.SUPABASE_ANON_KEY || "";
+
+let supabase = null;
+if (SUPABASE_URL && SUPABASE_ANON_KEY && typeof window.supabase !== 'undefined') {
+    supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+}
+
+// Background sync from Supabase
+async function syncFromSupabase() {
+    if (!supabase) return;
+    try {
+        const { data, error } = await supabase
+            .from('ecosystem_state')
+            .select('state_json')
+            .eq('id', 'global_state')
+            .single();
+            
+        if (data && data.state_json) {
+            const serverState = data.state_json;
+            const localState = JSON.parse(localStorage.getItem("school_eco_state"));
+            serverState.loggedInUser = localState ? localState.loggedInUser : null;
+            localStorage.setItem("school_eco_state", JSON.stringify(serverState));
+            
+            // Dispatch event to notify UI to re-render
+            window.dispatchEvent(new Event('stateUpdated'));
+        }
+    } catch (e) {
+        console.warn("Supabase sync failed, using localStorage fallback:", e);
+    }
+}
+
+// Background sync to Supabase
+async function syncToSupabase(state) {
+    if (!supabase) return;
+    try {
+        const stateToSave = { ...state, loggedInUser: null }; // Don't persist session to DB
+        await supabase
+            .from('ecosystem_state')
+            .upsert({ id: 'global_state', state_json: stateToSave });
+    } catch (e) {
+        console.warn("Failed to push update to Supabase:", e);
+    }
+}
+
 // Initialize State
 function getAppState() {
     let state = localStorage.getItem("school_eco_state");
@@ -27,11 +73,20 @@ function getAppState() {
         state = JSON.stringify(DEFAULT_STATE);
         localStorage.setItem("school_eco_state", state);
     }
+    
+    // Trigger async sync in the background
+    if (supabase) {
+        syncFromSupabase();
+    }
+    
     return JSON.parse(state);
 }
 
 function saveAppState(state) {
     localStorage.setItem("school_eco_state", JSON.stringify(state));
+    if (supabase) {
+        syncToSupabase(state);
+    }
 }
 
 // Session Helpers
