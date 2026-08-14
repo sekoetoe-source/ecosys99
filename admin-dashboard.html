@@ -51,7 +51,7 @@
                 <span class="material-symbols-outlined icon-fill">dashboard</span>
                 <span class="font-label-sm text-label-sm">Dasbor</span>
             </a>
-            <a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-highest rounded-lg mx-2 my-1 transition-all" href="#">
+            <a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-highest rounded-lg mx-2 my-1 transition-all" href="#" onclick="openAdminModal('analytics'); return false;">
                 <span class="material-symbols-outlined">analytics</span>
                 <span class="font-label-sm text-label-sm">Analisis Siswa</span>
             </a>
@@ -59,15 +59,15 @@
                 <span class="material-symbols-outlined">bar_chart</span>
                 <span class="font-label-sm text-label-sm">Laporan Eco</span>
             </a>
-            <a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-highest rounded-lg mx-2 my-1 transition-all" href="#">
+            <a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-highest rounded-lg mx-2 my-1 transition-all" href="#" onclick="openAdminModal('officers'); return false;">
                 <span class="material-symbols-outlined">shield</span>
                 <span class="font-label-sm text-label-sm">Manajemen Petugas</span>
             </a>
-            <a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-highest rounded-lg mx-2 my-1 transition-all" href="#">
+            <a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-highest rounded-lg mx-2 my-1 transition-all" href="#" onclick="openAdminModal('settings'); return false;">
                 <span class="material-symbols-outlined">settings</span>
                 <span class="font-label-sm text-label-sm">Pengaturan Pengguna</span>
             </a>
-            <a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-highest rounded-lg mx-2 my-1 transition-all" href="#">
+            <a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-highest rounded-lg mx-2 my-1 transition-all" href="#" onclick="openAdminModal('audit'); return false;">
                 <span class="material-symbols-outlined">history</span>
                 <span class="font-label-sm text-label-sm">Log Audit</span>
             </a>
@@ -92,10 +92,10 @@
                 <button onclick="logout()" class="md:hidden flex items-center gap-1 text-danger-red font-label-sm border border-danger-red/30 px-3 py-1 rounded-full bg-white/80 hover:bg-danger-red/10 transition-colors">
                     Keluar
                 </button>
-                <button class="w-10 h-10 rounded-full bg-surface-container-low flex items-center justify-center text-on-surface-variant hover:bg-surface-container transition-colors">
+                <button onclick="openAdminModal('notifications')" class="w-10 h-10 rounded-full bg-surface-container-low flex items-center justify-center text-on-surface-variant hover:bg-surface-container transition-colors">
                     <span class="material-symbols-outlined">notifications</span>
                 </button>
-                <button onclick="alert('Pembuatan PDF laporan Eco dipicu!')" class="px-6 py-2 bg-secondary text-on-secondary rounded-full font-label-sm text-label-sm hover:bg-on-secondary-fixed-variant transition-colors shadow-sm">
+                <button onclick="window.location.href='admin-reports.html'" class="px-6 py-2 bg-secondary text-on-secondary rounded-full font-label-sm text-label-sm hover:bg-on-secondary-fixed-variant transition-colors shadow-sm">
                     Buat Laporan
                 </button>
             </div>
@@ -370,6 +370,226 @@
         document.addEventListener("DOMContentLoaded", () => {
             renderAdminDashboard();
         });
+
+        function openAdminModal(type) {
+            const modal = document.getElementById("adminModal");
+            const icon = document.getElementById("modalIcon");
+            const title = document.getElementById("modalTitle");
+            const subtitle = document.getElementById("modalSubtitle");
+            const body = document.getElementById("modalBody");
+            const state = getAppState();
+
+            if (type === 'analytics') {
+                icon.innerText = "analytics";
+                title.innerText = "Analisis & Partisipasi Siswa";
+                subtitle.innerText = "Statistik mendalam mengenai kebiasaan membawa tumbler & tempat makan";
+                
+                const topStudents = [...state.students].sort((a,b) => b.points - a.points);
+                body.innerHTML = `
+                    <div class="grid grid-cols-3 gap-3 mb-4">
+                        <div class="p-3 bg-surface-container-low rounded-xl text-center">
+                            <p class="font-label-xs text-muted-gray">Total Terdaftar</p>
+                            <p class="font-headline-md text-primary font-bold">${state.students.length} Siswa</p>
+                        </div>
+                        <div class="p-3 bg-surface-container-low rounded-xl text-center">
+                            <p class="font-label-xs text-muted-gray">Aktif Tumbler</p>
+                            <p class="font-headline-md text-secondary font-bold">${state.students.filter(s => s.tumblerScanned).length} Siswa</p>
+                        </div>
+                        <div class="p-3 bg-surface-container-low rounded-xl text-center">
+                            <p class="font-label-xs text-muted-gray">Aktif Lunchbox</p>
+                            <p class="font-headline-md text-eco-success font-bold">${state.students.filter(s => s.lunchboxScanned).length} Siswa</p>
+                        </div>
+                    </div>
+                    <h4 class="font-label-sm font-bold text-primary mb-2">Daftar Peringkat Partisipasi Siswa</h4>
+                    <div class="space-y-2 max-h-60 overflow-y-auto">
+                        ${topStudents.map((s, idx) => `
+                            <div class="flex items-center justify-between p-3 bg-surface-container-lowest border border-outline-variant/20 rounded-xl hover:bg-surface-container-low/50">
+                                <div class="flex items-center gap-3">
+                                    <span class="font-bold text-label-sm w-6 text-center ${idx < 3 ? 'text-secondary' : 'text-muted-gray'}">#${idx + 1}</span>
+                                    <img src="${s.avatar}" class="w-8 h-8 rounded-full object-cover"/>
+                                    <div>
+                                        <p class="font-label-sm font-bold text-primary">${s.name}</p>
+                                        <p class="font-label-xs text-muted-gray">${s.grade} • Streak ${s.streak} Hari</p>
+                                    </div>
+                                </div>
+                                <span class="font-label-sm font-bold text-secondary">${s.points.toLocaleString()} Poin</span>
+                            </div>
+                        `).join('')}
+                    </div>
+                `;
+            } else if (type === 'officers') {
+                icon.innerText = "shield";
+                title.innerText = "Manajemen Petugas Lapangan";
+                subtitle.innerText = "Kelola akun petugas scanner dan lokasi verifikasi sampah";
+                
+                body.innerHTML = `
+                    <div class="flex justify-between items-center mb-3">
+                        <span class="font-label-sm font-bold text-primary">Daftar Petugas Aktif</span>
+                        <button onclick="alert('Form penambahan petugas baru terbuka!')" class="px-3 py-1.5 bg-secondary text-white rounded-full font-label-xs font-bold hover:bg-secondary-container transition-colors flex items-center gap-1">
+                            <span class="material-symbols-outlined text-sm">add</span> Tambah Petugas
+                        </button>
+                    </div>
+                    <div class="space-y-3">
+                        <div class="p-4 bg-surface-container-lowest border border-outline-variant/30 rounded-xl flex justify-between items-center">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-full bg-secondary-container/30 text-secondary flex items-center justify-center font-bold">
+                                    OF
+                                </div>
+                                <div>
+                                    <p class="font-label-sm font-bold text-primary">Officer Smith <span class="ml-2 px-2 py-0.5 bg-eco-success/10 text-eco-success text-xs rounded-full font-semibold">Aktif</span></p>
+                                    <p class="font-label-xs text-muted-gray">ID: OF-9912 • Pos: Kantin Utama (Shift Pagi)</p>
+                                </div>
+                            </div>
+                            <button onclick="alert('Detail petugas OF-9912')" class="text-secondary font-label-xs underline">Kelola</button>
+                        </div>
+                        <div class="p-4 bg-surface-container-lowest border border-outline-variant/30 rounded-xl flex justify-between items-center">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-full bg-surface-container text-muted-gray flex items-center justify-center font-bold">
+                                    OB
+                                </div>
+                                <div>
+                                    <p class="font-label-sm font-bold text-primary">Officer Budi <span class="ml-2 px-2 py-0.5 bg-eco-success/10 text-eco-success text-xs rounded-full font-semibold">Aktif</span></p>
+                                    <p class="font-label-xs text-muted-gray">ID: OF-8821 • Pos: Gate Lapangan Barat</p>
+                                </div>
+                            </div>
+                            <button onclick="alert('Detail petugas OF-8821')" class="text-secondary font-label-xs underline">Kelola</button>
+                        </div>
+                    </div>
+                `;
+            } else if (type === 'settings') {
+                icon.innerText = "settings";
+                title.innerText = "Pengaturan Pengguna & Sistem";
+                subtitle.innerText = "Konfigurasi aturan poin ekosistem dan notifikasi";
+                
+                body.innerHTML = `
+                    <form onsubmit="event.preventDefault(); alert('Pengaturan berhasil disimpan!'); closeAdminModal();" class="space-y-4">
+                        <div class="p-4 bg-surface-container-low rounded-xl space-y-3">
+                            <h4 class="font-label-sm font-bold text-primary">Skema Poin Sampah</h4>
+                            <div class="grid grid-cols-2 gap-3">
+                                <div>
+                                    <label class="font-label-xs text-muted-gray block mb-1">Poin Botol/Tumbler</label>
+                                    <input type="number" value="100" class="w-full p-2 border border-outline-variant rounded-lg bg-white font-label-sm"/>
+                                </div>
+                                <div>
+                                    <label class="font-label-xs text-muted-gray block mb-1">Poin Kotak Makan</label>
+                                    <input type="number" value="50" class="w-full p-2 border border-outline-variant rounded-lg bg-white font-label-sm"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-4 bg-surface-container-low rounded-xl space-y-3">
+                            <h4 class="font-label-sm font-bold text-primary">Otomatisasi & Notifikasi</h4>
+                            <div class="flex items-center justify-between">
+                                <span class="font-label-sm text-on-surface-variant">Persetujuan Otomatis Scanner</span>
+                                <input type="checkbox" checked class="w-4 h-4 text-secondary"/>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <span class="font-label-sm text-on-surface-variant">Kirim Laporan Mingguan ke Email Admin</span>
+                                <input type="checkbox" checked class="w-4 h-4 text-secondary"/>
+                            </div>
+                        </div>
+                        <button type="submit" class="w-full py-3 bg-secondary text-white font-bold rounded-full shadow-md hover:bg-secondary-container transition-colors">
+                            Simpan Perubahan
+                        </button>
+                    </form>
+                `;
+            } else if (type === 'audit') {
+                icon.innerText = "history";
+                title.innerText = "Log Audit System";
+                subtitle.innerText = "Catatan riwayat aktivitas administratif dan transaksi poin";
+                
+                body.innerHTML = `
+                    <div class="space-y-2">
+                        <div class="p-3 bg-surface-container-lowest border border-outline-variant/20 rounded-xl flex items-center justify-between">
+                            <div>
+                                <p class="font-label-sm font-bold text-primary">Validasi Disetujui <span class="font-normal text-muted-gray">(val-1 • Sarah Jenkins)</span></p>
+                                <p class="font-label-xs text-muted-gray">Oleh: Admin Principal • 10:45:12 WIB</p>
+                            </div>
+                            <span class="px-2 py-1 bg-eco-success/10 text-eco-success text-xs rounded-full font-bold">+150 Poin</span>
+                        </div>
+                        <div class="p-3 bg-surface-container-lowest border border-outline-variant/20 rounded-xl flex items-center justify-between">
+                            <div>
+                                <p class="font-label-sm font-bold text-primary">Pemindaian Tumbler Berhasil</p>
+                                <p class="font-label-xs text-muted-gray">Oleh: Officer Smith (OF-9912) • 09:30:00 WIB</p>
+                            </div>
+                            <span class="px-2 py-1 bg-secondary-fixed text-on-secondary-fixed text-xs rounded-full font-bold">Scan QR</span>
+                        </div>
+                        <div class="p-3 bg-surface-container-lowest border border-outline-variant/20 rounded-xl flex items-center justify-between">
+                            <div>
+                                <p class="font-label-sm font-bold text-primary">Login Admin Berhasil</p>
+                                <p class="font-label-xs text-muted-gray">IP: 127.0.0.1 • 08:15:44 WIB</p>
+                            </div>
+                            <span class="px-2 py-1 bg-surface-container-high text-on-surface-variant text-xs rounded-full font-bold">Auth</span>
+                        </div>
+                        <div class="p-3 bg-surface-container-lowest border border-outline-variant/20 rounded-xl flex items-center justify-between">
+                            <div>
+                                <p class="font-label-sm font-bold text-primary">Laporan Eco PDF Diekspor</p>
+                                <p class="font-label-xs text-muted-gray">Oleh: Admin Principal • Kemarin 16:20 WIB</p>
+                            </div>
+                            <span class="px-2 py-1 bg-violet-accent/10 text-violet-accent text-xs rounded-full font-bold">PDF Export</span>
+                        </div>
+                    </div>
+                `;
+            } else if (type === 'notifications') {
+                icon.innerText = "notifications";
+                title.innerText = "Notifikasi Sistem";
+                subtitle.innerText = "Pemberitahuan terbaru mengenai aktivitas ekosistem";
+                
+                body.innerHTML = `
+                    <div class="space-y-2">
+                        <div class="p-3 bg-secondary/5 border-l-4 border-secondary rounded-r-xl">
+                            <p class="font-label-sm font-bold text-primary">Target Bulanan Mencapai 83%</p>
+                            <p class="font-label-xs text-muted-gray">12.500 botol plastik berhasil terkumpul bulan ini.</p>
+                        </div>
+                        <div class="p-3 bg-warning-amber/5 border-l-4 border-warning-amber rounded-r-xl">
+                            <p class="font-label-sm font-bold text-primary">Permintaan Validasi Tertunda</p>
+                            <p class="font-label-xs text-muted-gray">Ada 3 klaim poin dari siswa yang memerlukan persetujuan.</p>
+                        </div>
+                    </div>
+                `;
+            }
+
+            modal.classList.remove("hidden");
+            modal.classList.add("flex");
+        }
+
+        function closeAdminModal() {
+            const modal = document.getElementById("adminModal");
+            modal.classList.remove("flex");
+            modal.classList.add("hidden");
+        }
     </script>
+
+    <!-- Modal Container for Admin Sidebar Features -->
+    <div id="adminModal" class="fixed inset-0 z-[100] hidden items-center justify-center bg-black/60 backdrop-blur-sm p-4">
+        <div class="bg-surface-container-lowest rounded-2xl p-6 max-w-2xl w-full border border-outline-variant/30 shadow-2xl flex flex-col max-h-[90vh] overflow-hidden relative">
+            <!-- Modal Header -->
+            <div class="flex items-center justify-between pb-4 mb-4 border-b border-outline-variant/20">
+                <div class="flex items-center gap-3">
+                    <div id="modalIconContainer" class="w-10 h-10 rounded-full bg-secondary/10 flex items-center justify-center text-secondary">
+                        <span id="modalIcon" class="material-symbols-outlined">analytics</span>
+                    </div>
+                    <div>
+                        <h3 id="modalTitle" class="font-headline-md text-headline-md font-bold text-primary">Analisis Siswa</h3>
+                        <p id="modalSubtitle" class="font-label-xs text-label-xs text-muted-gray">Detail partisipasi dan statistik siswa</p>
+                    </div>
+                </div>
+                <button onclick="closeAdminModal()" class="w-8 h-8 rounded-full bg-surface-container-low hover:bg-surface-container flex items-center justify-center text-on-surface-variant transition-colors">
+                    <span class="material-symbols-outlined text-xl">close</span>
+                </button>
+            </div>
+            
+            <!-- Modal Body (Dynamic content rendered via JS) -->
+            <div id="modalBody" class="flex-grow overflow-y-auto space-y-4 pr-1">
+                <!-- Injected via JavaScript -->
+            </div>
+
+            <!-- Modal Footer -->
+            <div class="pt-4 mt-4 border-t border-outline-variant/20 flex justify-end gap-2">
+                <button onclick="closeAdminModal()" class="px-5 py-2 rounded-full border border-outline-variant text-on-surface-variant font-label-sm hover:bg-surface-container-low transition-colors">
+                    Tutup
+                </button>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
