@@ -69,17 +69,24 @@ async function syncToSupabase(state) {
 // Initialize State
 function getAppState() {
     let state = localStorage.getItem("school_eco_state");
-    if (!state || !state.includes("Kelas")) {
+    try {
+        if (!state || !state.includes("Kelas")) {
+            state = JSON.stringify(DEFAULT_STATE);
+            localStorage.setItem("school_eco_state", state);
+        }
+        
+        // Trigger async sync in the background
+        if (supabase) {
+            syncFromSupabase();
+        }
+        
+        return JSON.parse(state);
+    } catch (e) {
+        console.error("Error parsing app state, resetting to default:", e);
         state = JSON.stringify(DEFAULT_STATE);
         localStorage.setItem("school_eco_state", state);
+        return DEFAULT_STATE;
     }
-    
-    // Trigger async sync in the background
-    if (supabase) {
-        syncFromSupabase();
-    }
-    
-    return JSON.parse(state);
 }
 
 function saveAppState(state) {
@@ -108,14 +115,15 @@ function login(email, role) {
         avatar = "https://lh3.googleusercontent.com/aida-public/AB6AXuDdmATtD99xlSOAYq5OnBTqRHjT6U7S_mG8HxmMkkWjFHq3HZVbCAxb-OCdVxnV6cWV2Ugq8mbYQRE9KhThgqCukiR-KKIFxU4M6FWD8UaIrgMyaW6D5HGOGK-cX9NZuAh4kFB_lc2ykeG9HqLYIKIUaDZvy3Iu8pwdliCS2fvu6YUdldXKj60eE6K_nOVbV9c0tpaawLdSLsFDz8es7jGHIWOUXaUF9X1w6tUw8PW5cXo3NkZruHCt";
     } else {
         // Find matching student by email/ID prefix if applicable, default to Alex Chen
-        const found = state.students.find(s => email.toLowerCase().includes(s.name.split(' ')[0].toLowerCase()));
+        const safeEmail = (email || "").toLowerCase();
+        const found = state.students && state.students.find(s => safeEmail && safeEmail.includes(s.name.split(' ')[0].toLowerCase()));
         if (found) {
             name = found.name;
             avatar = found.avatar;
         }
     }
 
-    state.loggedInUser = { email, role, name, avatar };
+    state.loggedInUser = { email: email || "", role, name, avatar };
     saveAppState(state);
 }
 

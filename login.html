@@ -75,7 +75,7 @@
                 </button>
             </div>
             <!-- Login Form -->
-            <form id="loginForm" class="space-y-6">
+            <form id="loginForm" class="space-y-6" onsubmit="handleLogin(event)">
                 <!-- Username / Email -->
                 <div>
                     <label class="block font-label-sm text-label-sm text-primary mb-2" id="email-label" for="email">Email Sekolah atau NIS</label>
@@ -125,7 +125,6 @@
             </div>
         </div>
     </main>
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="shared.js"></script>
     <script>
         let currentRole = 'student';
@@ -168,10 +167,27 @@
             }
         }
 
-        document.getElementById("loginForm").addEventListener("submit", (e) => {
-            e.preventDefault();
-            const email = document.getElementById("email").value;
-            login(email, currentRole);
+        function handleLogin(e) {
+            if (e) e.preventDefault();
+            const emailInput = document.getElementById("email");
+            const email = emailInput ? emailInput.value : "";
+            
+            if (typeof login === "function") {
+                login(email, currentRole);
+            } else {
+                const state = JSON.parse(localStorage.getItem("school_eco_state") || '{}');
+                let name = "Alex Chen";
+                let avatar = "https://lh3.googleusercontent.com/aida-public/AB6AXuCSb5kZjywGh-7Jf29MUuU48a1jitRYrrLFdJbU-bdxEECy8cySIhiA4xpAldBdQTLjCLOsADaznSVvWaxHe1LRKMvVLZ7FF1B8tIzHuyaVt2tvPgUhIiN4XEgQ_taY73zuEh4UUqPInmC2hLhR4lVg3Kfgxoowqkb6N7BUFofcONE5t9Xq55O68B350eEXmX0k85_sJJ-saP6z8Gq5CvMWM4N0eIJDUQUYM-N50uzdquPiVUAyqimV";
+                if (currentRole === "officer") {
+                    name = "Officer Smith";
+                    avatar = "https://lh3.googleusercontent.com/aida-public/AB6AXuAeYFI6Z8p3RGBBsw9yKkCkx9qUHxKnXKY5xZ7AmYHen0fCOqC6xTXEpdaIs2N-qoNdrJQ3ZbuyFX6UMb0akhIk6QJwRxaETYROUxUAVMYsHXzkli7VO7E51g-FtIK2sMPrTK-ncV-xLA_FHDJY4ZdccyFQdAvSSFzCH_KdY0zWIceoIQMza-nopzrz6Z2ICcKhBSTaZm8G8SdwktNIrUAxl-qoJjNm56Jx0iRAUe92yPzCM_l6rRD_";
+                } else if (currentRole === "admin") {
+                    name = "Admin Principal";
+                    avatar = "https://lh3.googleusercontent.com/aida-public/AB6AXuDdmATtD99xlSOAYq5OnBTqRHjT6U7S_mG8HxmMkkWjFHq3HZVbCAxb-OCdVxnV6cWV2Ugq8mbYQRE9KhThgqCukiR-KKIFxU4M6FWD8UaIrgMyaW6D5HGOGK-cX9NZuAh4kFB_lc2ykeG9HqLYIKIUaDZvy3Iu8pwdliCS2fvu6YUdldXKj60eE6K_nOVbV9c0tpaawLdSLsFDz8es7jGHIWOUXaUF9X1w6tUw8PW5cXo3NkZruHCt";
+                }
+                state.loggedInUser = { email, role: currentRole, name, avatar };
+                localStorage.setItem("school_eco_state", JSON.stringify(state));
+            }
             
             // Redirect based on role
             if (currentRole === 'student') {
@@ -181,15 +197,18 @@
             } else if (currentRole === 'admin') {
                 window.location.href = 'admin-dashboard.html';
             }
-        });
+            return false;
+        }
 
         // Auto-redirect if already logged in
         document.addEventListener("DOMContentLoaded", () => {
-            const user = getLoggedInUser();
-            if (user) {
-                if (user.role === 'student') window.location.href = 'student-dashboard.html';
-                else if (user.role === 'officer') window.location.href = 'officer-scanner.html';
-                else if (user.role === 'admin') window.location.href = 'admin-dashboard.html';
+            if (typeof getLoggedInUser === "function") {
+                const user = getLoggedInUser();
+                if (user) {
+                    if (user.role === 'student') window.location.href = 'student-dashboard.html';
+                    else if (user.role === 'officer') window.location.href = 'officer-scanner.html';
+                    else if (user.role === 'admin') window.location.href = 'admin-dashboard.html';
+                }
             }
         });
     </script>
