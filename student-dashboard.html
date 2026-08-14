@@ -176,20 +176,7 @@
                     </div>
                 </div>
             </div>
-            <!-- Traktir Kopi Card -->
-            <div class="bg-surface-container-lowest rounded-xl shadow-premium-card border border-outline-variant/20 overflow-hidden flex flex-col hover:shadow-md transition-shadow mt-4">
-                <div class="p-md border-b border-outline-variant/30 flex items-center gap-xs bg-surface-container-low/50">
-                    <span class="material-symbols-outlined text-warning-amber text-[18px]">local_cafe</span>
-                    <h3 class="font-label-sm text-label-sm text-primary uppercase tracking-wider">Dukung Pengembang</h3>
-                </div>
-                <div class="p-md flex flex-col gap-sm">
-                    <p class="font-body-md text-body-md text-on-surface-variant">Suka dengan aplikasi ini? Traktir kopi pengembang untuk mendukung server tetap aktif!</p>
-                    <button onclick="openCoffeeModal()" class="w-full bg-warning-amber hover:bg-warning-amber/90 text-on-surface font-bold py-3 rounded-full shadow-md flex items-center justify-center gap-2 transition-all active:scale-95 text-center text-label-sm">
-                        <span class="material-symbols-outlined">coffee</span>
-                        Traktir Kopi
-                    </button>
-                </div>
-            </div>
+
         </aside>
     </main>
     <!-- BottomNavBar -->
@@ -323,40 +310,9 @@
             });
         });
 
-        function openCoffeeModal() {
-            const modal = document.getElementById("coffeeModal");
-            modal.classList.remove("hidden");
-            modal.classList.add("flex");
-        }
 
-        function closeCoffeeModal() {
-            const modal = document.getElementById("coffeeModal");
-            modal.classList.remove("flex");
-            modal.classList.add("hidden");
-        }
     </script>
 
-    <!-- Traktir Kopi Modal -->
-    <div id="coffeeModal" class="fixed inset-0 z-[100] hidden items-center justify-center bg-black/60 backdrop-blur-sm p-4">
-        <div class="bg-surface-container-lowest rounded-2xl p-6 max-w-sm w-full border border-outline-variant/30 shadow-2xl flex flex-col items-center text-center transform scale-95 transition-transform duration-300 relative">
-            <button onclick="closeCoffeeModal()" class="absolute top-4 right-4 text-on-surface-variant hover:text-primary transition-colors">
-                <span class="material-symbols-outlined">close</span>
-            </button>
-            <div class="w-16 h-16 bg-warning-amber/10 rounded-full flex items-center justify-center text-warning-amber mb-4">
-                <span class="material-symbols-outlined text-3xl">coffee</span>
-            </div>
-            <h3 class="font-headline-md text-headline-md text-primary mb-1">Traktir Kopi Pengembang</h3>
-            <p class="font-body-md text-body-md text-muted-gray mb-6">Scan QR di bawah ini menggunakan aplikasi e-wallet Anda untuk melakukan pembayaran via Mayar.id</p>
-            
-            <div class="bg-white p-4 rounded-xl border border-outline-variant/30 shadow-sm mb-6 flex items-center justify-center">
-                <!-- Mayar.id QR Code Generator (Uses Mayar payment link as payload) -->
-                <img alt="Mayar QR Code" class="w-52 h-52 object-contain" src="https://api.qrserver.com/v1/create-qr-code/?size=256x256&data=https://mayar.to/banyubiru"/>
-            </div>
-            
-            <button onclick="closeCoffeeModal()" class="w-full bg-secondary text-on-secondary font-bold py-3 rounded-full hover:bg-on-secondary-fixed-variant transition-colors shadow-sm">
-                Selesai
-            </button>
-        </div>
-    </div>
+
 </body>
 </html>

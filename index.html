@@ -109,6 +109,25 @@
                 </div>
             </div>
         </section>
+        <!-- Dukung Pengembang Section -->
+        <section class="max-w-7xl mx-auto px-margin-mobile md:px-margin-desktop py-lg relative z-10">
+            <div class="glass-panel p-lg rounded-2xl border border-outline-variant/20 flex flex-col md:flex-row items-center justify-between gap-md bg-surface-container-lowest/80">
+                <div class="flex items-center gap-md">
+                    <div class="w-12 h-12 bg-warning-amber/10 rounded-full flex items-center justify-center text-warning-amber shrink-0">
+                        <span class="material-symbols-outlined text-2xl">local_cafe</span>
+                    </div>
+                    <div class="text-left">
+                        <h3 class="font-headline-sm text-headline-sm font-bold text-primary">Dukung Pengembang</h3>
+                        <p class="font-body-md text-body-md text-on-surface-variant mt-1">Suka dengan aplikasi ini? Traktir kopi pengembang untuk mendukung server tetap aktif!</p>
+                    </div>
+                </div>
+                <button onclick="openCoffeeModal()" class="bg-warning-amber hover:bg-warning-amber/90 text-on-surface font-bold px-6 py-3 rounded-full shadow-md flex items-center justify-center gap-2 transition-all active:scale-95 text-label-sm shrink-0">
+                    <span class="material-symbols-outlined">coffee</span>
+                    Traktir Kopi
+                </button>
+            </div>
+        </section>
+
         <!-- Footer -->
         <footer class="w-full mt-xl bg-surface-container-lowest border-t border-outline-variant/30">
             <div class="max-w-7xl mx-auto px-margin-desktop py-xl flex flex-col md:flex-row justify-between items-center gap-md">
@@ -153,6 +172,40 @@
                 document.getElementById("profile-link").href = user.role === "student" ? "student-dashboard.html" : (user.role === "officer" ? "officer-scanner.html" : "admin-dashboard.html");
             }
         });
+
+        function openCoffeeModal() {
+            const modal = document.getElementById("coffeeModal");
+            modal.classList.remove("hidden");
+            modal.classList.add("flex");
+        }
+
+        function closeCoffeeModal() {
+            const modal = document.getElementById("coffeeModal");
+            modal.classList.remove("flex");
+            modal.classList.add("hidden");
+        }
     </script>
+    <!-- Traktir Kopi Modal -->
+    <div id="coffeeModal" class="fixed inset-0 z-[100] hidden items-center justify-center bg-black/60 backdrop-blur-sm p-4">
+        <div class="bg-surface-container-lowest rounded-2xl p-6 max-w-sm w-full border border-outline-variant/30 shadow-2xl flex flex-col items-center text-center transform scale-95 transition-transform duration-300 relative">
+            <button onclick="closeCoffeeModal()" class="absolute top-4 right-4 text-on-surface-variant hover:text-primary transition-colors">
+                <span class="material-symbols-outlined">close</span>
+            </button>
+            <div class="w-16 h-16 bg-warning-amber/10 rounded-full flex items-center justify-center text-warning-amber mb-4">
+                <span class="material-symbols-outlined text-3xl">coffee</span>
+            </div>
+            <h3 class="font-headline-md text-headline-md text-primary mb-1">Traktir Kopi Pengembang</h3>
+            <p class="font-body-md text-body-md text-muted-gray mb-6">Scan QR di bawah ini menggunakan aplikasi e-wallet Anda untuk melakukan pembayaran via Mayar.id</p>
+            
+            <div class="bg-white p-4 rounded-xl border border-outline-variant/30 shadow-sm mb-6 flex items-center justify-center">
+                <!-- Mayar.id QR Code Generator (Uses Mayar payment link as payload) -->
+                <img alt="Mayar QR Code" class="w-52 h-52 object-contain" src="https://api.qrserver.com/v1/create-qr-code/?size=256x256&data=https://mayar.to/banyubiru"/>
+            </div>
+            
+            <button onclick="closeCoffeeModal()" class="w-full bg-secondary text-on-secondary font-bold py-3 rounded-full hover:bg-on-secondary-fixed-variant transition-colors shadow-sm">
+                Selesai
+            </button>
+        </div>
+    </div>
 </body>
 </html>
